@@ -29,6 +29,7 @@ body {
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.55;
+  overflow-wrap: break-word;
 }
 
 .wrap {
@@ -55,12 +56,24 @@ a { color: inherit; }
   outline-offset: 2px;
 }
 
+/* ---- Fictional-site notice (top of every page) ------------------------ */
+
+.site-notice {
+  background: var(--ink);
+  color: var(--chalk);
+  padding: 9px 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.site-notice p { margin: 0; }
+
 /* ---- Header -------------------------------------------------------- */
 
 .site-header {
   background: var(--turf);
   color: var(--chalk);
-  padding: 36px 0 22px;
+  padding: 32px 0 22px;
   border-bottom: 4px solid var(--gold);
 }
 
@@ -84,7 +97,7 @@ a { color: inherit; }
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 8px 20px;
 }
 
 .site-nav a {
@@ -101,16 +114,33 @@ a { color: inherit; }
   border-bottom-color: var(--gold);
 }
 
-/* ---- Main / post list ------------------------------------------------ */
+/* ---- Main / intro blocks ------------------------------------------------ */
 
 main { padding: 40px 0 64px; }
 
-.category-intro {
-  color: var(--slate);
-  margin-bottom: 28px;
+.intro { margin-bottom: 8px; }
+
+.intro-title {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1.15;
+  font-weight: 400;
+  margin: 0 0 14px;
 }
 
-.empty-note { color: var(--slate); }
+.intro p { margin: 0 0 1em; }
+
+.intro a { color: var(--brick); font-weight: 600; }
+
+.list-heading {
+  margin: 40px 0 18px;
+  padding-top: 18px;
+  border-top: 2px solid var(--turf);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
 
 .post-list {
   display: flex;
@@ -134,6 +164,8 @@ main { padding: 40px 0 64px; }
   color: var(--gold);
   line-height: 1;
 }
+
+.post-row-body { min-width: 0; }
 
 .post-row-title {
   display: block;
@@ -165,8 +197,8 @@ main { padding: 40px 0 64px; }
   font-family: var(--font-display);
   font-size: 2rem;
   line-height: 1.15;
+  font-weight: 400;
   margin: 0 0 8px;
-  text-transform: none;
 }
 
 .post-meta {
@@ -184,6 +216,16 @@ main { padding: 40px 0 64px; }
 
 .post-content a { color: var(--brick); }
 
+.post-content ul,
+.post-content ol { padding-left: 1.4em; }
+
+.post-content li { margin: 0.6em 0; }
+
+.post-content ol li::marker {
+  font-weight: 700;
+  color: var(--brick);
+}
+
 .post-content blockquote {
   margin: 1.5em 0;
   padding-left: 16px;
@@ -191,8 +233,11 @@ main { padding: 40px 0 64px; }
   color: var(--slate);
 }
 
+/* Tables stay inside the screen on a phone: fixed layout, wrapping text,
+   no horizontal scroll. Keep tables to 2-4 short columns. */
 .post-content table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   margin: 1.5em 0;
   font-size: 0.92rem;
@@ -201,8 +246,10 @@ main { padding: 40px 0 64px; }
 .post-content th,
 .post-content td {
   text-align: left;
+  vertical-align: top;
   padding: 8px 10px;
   border-bottom: 1px solid #d9d4c4;
+  overflow-wrap: anywhere;
 }
 
 .post-content th {
@@ -210,33 +257,45 @@ main { padding: 40px 0 64px; }
   border-bottom: 2px solid var(--turf);
 }
 
-/* numeric columns (rank, stats) line up on a monospace grid */
+/* the first column (league size, rank, week, player) in a mono face */
 .post-content td:first-child,
 .post-content th:first-child {
   font-family: var(--font-mono);
   font-weight: 600;
   color: var(--turf);
-  white-space: nowrap;
 }
 
 /* ---- 404 -------------------------------------------------------------- */
 
-.not-found h1 { font-family: var(--font-display); }
+.not-found h1 { font-family: var(--font-display); font-weight: 400; }
 
 /* ---- Footer ------------------------------------------------------------ */
 
 .site-footer {
   background: var(--turf);
   color: #c9cfc4;
-  padding: 20px 0;
+  padding: 22px 0;
   font-size: 0.85rem;
+}
+
+.site-footer p { margin: 0 0 6px; }
+
+.site-footer .footer-notice {
+  margin-bottom: 12px;
+  color: var(--chalk);
 }
 
 /* ---- Small screens ------------------------------------------------- */
 
 @media (max-width: 480px) {
+  .wrap { padding: 0 18px; }
   .site-title { font-size: 1.7rem; }
+  .intro-title { font-size: 1.6rem; }
+  .post-header h1 { font-size: 1.7rem; }
   .post-num { font-size: 1.4rem; width: 1.8rem; }
+  .post-content table { font-size: 0.82rem; }
+  .post-content th,
+  .post-content td { padding: 6px 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

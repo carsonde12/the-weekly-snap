@@ -2,10 +2,14 @@
 layout: default
 title: Home
 ---
+<section class="intro">
+  <h1 class="intro-title">Fantasy football for leagues where the waiver wire is empty</h1>
+  <p>Most fantasy advice is written for 10- and 12-team leagues, where a decent starter is always one click away. In a 14- or 16-team league that stops being true, and the advice stops working with it. The Weekly Snap writes for the deep-league manager: weekly rankings, waiver adds, streaming picks, and plain-English strategy built around thin benches and thin waiver wires.</p>
+  <p>Start with the <a href="{{ '/rankings/' | relative_url }}">rankings and start-sit posts</a> if you need a lineup answer this week, or read the <a href="{{ '/analysis/' | relative_url }}">analysis and takes</a> if you want to understand why deep leagues play differently.</p>
+</section>
+
+<h2 class="list-heading">All posts</h2>
 <section class="post-list">
-  {% if site.posts.size == 0 %}
-    <p class="empty-note">No posts yet — the first one will show up here.</p>
-  {% endif %}
   {% for post in site.posts %}
     <article class="post-row">
       <span class="post-num">{{ forloop.index }}</span>

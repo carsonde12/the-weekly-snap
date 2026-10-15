@@ -3,13 +3,15 @@ layout: default
 title: Analysis & Takes
 permalink: /analysis/
 ---
-<p class="category-intro">Longer-form analysis, news reactions, and takes.</p>
+<section class="intro">
+  <h1 class="intro-title">Analysis and takes</h1>
+  <p>Rankings tell you who to start. Analysis explains how to build a team that makes those choices easier. These longer pieces cover how deep leagues differ from standard ones, how to spend a waiver budget when every manager is hunting for the same handful of players, and how to get through bye weeks without a collapse.</p>
+  <p>The numbers in these posts come from simple league math, and the opinions are labeled as opinions.</p>
+</section>
 
+<h2 class="list-heading">Analysis posts</h2>
 <section class="post-list">
   {% assign cat_posts = site.categories.analysis %}
-  {% if cat_posts.size == 0 %}
-    <p class="empty-note">No analysis posts yet.</p>
-  {% endif %}
   {% for post in cat_posts %}
     <article class="post-row">
       <span class="post-num">{{ forloop.index }}</span>
