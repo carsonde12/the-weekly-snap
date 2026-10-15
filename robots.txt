@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://carsonde12.github.io/the-weekly-snap/sitemap.xml

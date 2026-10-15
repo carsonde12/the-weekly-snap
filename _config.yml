@@ -1,0 +1,31 @@
+title: "The Weekly Snap"
+description: "Weekly rankings, start-sit calls, and waiver advice for deep-league fantasy football."
+
+# This is a GitHub Pages "project site" (repo name: the-weekly-snap), so the
+# site lives at https://carsonde12.github.io/the-weekly-snap/ and every
+# internal link needs the /the-weekly-snap prefix. baseurl handles that.
+url: "https://carsonde12.github.io"
+baseurl: "/the-weekly-snap"
+
+# Keyword-rich, readable URLs (e.g. /rankings/week-1-qb-start-sit/)
+# instead of Jekyll's default /2026/09/11/title.html — a deliberate SEO call.
+permalink: /:categories/:title/
+
+markdown: kramdown
+
+plugins:
+  - jekyll-seo-tag    # auto-generates meta tags (title, description, Open Graph) per page
+  - jekyll-sitemap    # auto-generates sitemap.xml for search engines
+  - jekyll-feed       # auto-generates an RSS feed at /feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Keep repo-only docs (not site content) out of the built site
+exclude:
+  - README.md
+  - DECISIONS.md

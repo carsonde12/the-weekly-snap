@@ -1,0 +1,25 @@
+---
+layout: default
+title: Analysis & Takes
+permalink: /analysis/
+---
+<p class="category-intro">Longer-form analysis, news reactions, and takes.</p>
+
+<section class="post-list">
+  {% assign cat_posts = site.categories.analysis %}
+  {% if cat_posts.size == 0 %}
+    <p class="empty-note">No analysis posts yet.</p>
+  {% endif %}
+  {% for post in cat_posts %}
+    <article class="post-row">
+      <span class="post-num">{{ forloop.index }}</span>
+      <div class="post-row-body">
+        <a class="post-row-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <p class="post-row-meta">Posted {{ post.date | date: "%b %-d, %Y" }}</p>
+        {% if post.excerpt %}
+          <p class="post-row-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
+        {% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</section>

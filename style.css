@@ -1,0 +1,244 @@
+/* ---- Design tokens -----------------------------------------------------
+   Palette pulls from turf and chalk rather than team colors, so it reads
+   as "football field" without looking like any one NFL team.
+   Anton (condensed, scoreboard-like) carries headlines and rank numerals;
+   Archivo carries body text; IBM Plex Mono is used only where numbers
+   need to line up in columns (stat tables), not as decoration.
+------------------------------------------------------------------------- */
+:root {
+  --turf: #1c3b2e;
+  --chalk: #f4f1e8;
+  --ink: #16211a;
+  --gold: #e8a33d;
+  --brick: #a8452e;
+  --slate: #6e7568;
+
+  --font-display: "Anton", sans-serif;
+  --font-body: "Archivo", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--chalk);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 8px 14px;
+  z-index: 10;
+}
+.skip-link:focus { left: 12px; top: 12px; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---- Header -------------------------------------------------------- */
+
+.site-header {
+  background: var(--turf);
+  color: var(--chalk);
+  padding: 36px 0 22px;
+  border-bottom: 4px solid var(--gold);
+}
+
+.site-title {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--chalk);
+}
+
+.site-tagline {
+  margin: 6px 0 20px;
+  color: #c9cfc4;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--chalk);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  border-bottom-color: var(--gold);
+}
+
+/* ---- Main / post list ------------------------------------------------ */
+
+main { padding: 40px 0 64px; }
+
+.category-intro {
+  color: var(--slate);
+  margin-bottom: 28px;
+}
+
+.empty-note { color: var(--slate); }
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-row {
+  display: flex;
+  gap: 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid #d9d4c4;
+}
+
+.post-row:first-child { padding-top: 0; }
+
+.post-num {
+  flex: 0 0 auto;
+  width: 2.2rem;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.post-row-title {
+  display: block;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.post-row-title:hover,
+.post-row-title:focus-visible {
+  color: var(--brick);
+}
+
+.post-row-meta {
+  margin: 4px 0 6px;
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+
+.post-row-excerpt {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ---- Post article ------------------------------------------------- */
+
+.post-header h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.15;
+  margin: 0 0 8px;
+  text-transform: none;
+}
+
+.post-meta {
+  color: var(--slate);
+  font-size: 0.9rem;
+  margin: 0 0 28px;
+}
+
+.post-content h2 {
+  font-size: 1.3rem;
+  margin-top: 2em;
+}
+
+.post-content p { margin: 1em 0; }
+
+.post-content a { color: var(--brick); }
+
+.post-content blockquote {
+  margin: 1.5em 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--gold);
+  color: var(--slate);
+}
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.92rem;
+}
+
+.post-content th,
+.post-content td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #d9d4c4;
+}
+
+.post-content th {
+  font-weight: 700;
+  border-bottom: 2px solid var(--turf);
+}
+
+/* numeric columns (rank, stats) line up on a monospace grid */
+.post-content td:first-child,
+.post-content th:first-child {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--turf);
+  white-space: nowrap;
+}
+
+/* ---- 404 -------------------------------------------------------------- */
+
+.not-found h1 { font-family: var(--font-display); }
+
+/* ---- Footer ------------------------------------------------------------ */
+
+.site-footer {
+  background: var(--turf);
+  color: #c9cfc4;
+  padding: 20px 0;
+  font-size: 0.85rem;
+}
+
+/* ---- Small screens ------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .site-title { font-size: 1.7rem; }
+  .post-num { font-size: 1.4rem; width: 1.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
