@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Weekly Snap</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --turf: #1c3b2e;
+      --chalk: #f4f1e8;
+      --ink: #16211a;
+      --gold: #e8a33d;
+      --brick: #a8452e;
+      --slate: #6e7568;
+      --font-display: "Anton", sans-serif;
+      --font-body: "Archivo", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--chalk);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.55;
+      overflow-wrap: break-word;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+    .skip-link {
+      position: absolute; left: -999px; top: 0;
+      background: var(--gold); color: var(--ink); padding: 8px 14px; z-index: 10;
+    }
+    .skip-link:focus { left: 12px; top: 12px; }
+
+    .site-notice {
+      background: var(--ink); color: var(--chalk);
+      padding: 9px 0; font-size: 0.82rem; line-height: 1.4;
+    }
+    .site-notice p { margin: 0; }
+
+    .site-header {
+      background: var(--turf); color: var(--chalk);
+      padding: 32px 0 22px; border-bottom: 4px solid var(--gold);
+    }
+    .site-title {
+      display: inline-block; font-family: var(--font-display);
+      font-size: 2.1rem; letter-spacing: 0.02em; text-transform: uppercase;
+      text-decoration: none; color: var(--chalk);
+    }
+    .site-tagline { margin: 6px 0 20px; color: #c9cfc4; font-size: 0.95rem; font-style: italic; }
+    .site-nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+    .site-nav a {
+      text-decoration: none; color: var(--chalk); font-weight: 600; font-size: 0.92rem;
+      padding-bottom: 3px; border-bottom: 2px solid transparent;
+    }
+    .site-nav a:hover, .site-nav a:focus-visible { border-bottom-color: var(--gold); }
+
+    main { padding: 40px 0 64px; }
+    .intro-title {
+      font-family: var(--font-display); font-size: 1.9rem; line-height: 1.15;
+      font-weight: 400; margin: 0 0 14px;
+    }
+    .intro p { margin: 0 0 1em; }
+    .intro a { color: var(--brick); font-weight: 600; }
+
+    .list-heading {
+      margin: 40px 0 18px; padding-top: 18px; border-top: 2px solid var(--turf);
+      font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate);
+    }
+    .post-list { display: flex; flex-direction: column; }
+    .post-row { display: flex; gap: 18px; padding: 22px 0; border-bottom: 1px solid #d9d4c4; }
+    .post-row:first-child { padding-top: 0; }
+    .post-num {
+      flex: 0 0 auto; width: 2.2rem; font-family: var(--font-display);
+      font-size: 1.8rem; color: var(--gold); line-height: 1;
+    }
+    .post-row-body { min-width: 0; }
+    .post-row-title {
+      display: block; font-weight: 700; font-size: 1.15rem;
+      text-decoration: none; color: var(--ink);
+    }
+    .post-row-title:hover, .post-row-title:focus-visible { color: var(--brick); }
+    .post-row-meta { margin: 4px 0 6px; font-size: 0.85rem; color: var(--slate); }
+    .post-row-excerpt { margin: 0; font-size: 0.95rem; }
+
+    .site-footer { background: var(--turf); color: #c9cfc4; padding: 22px 0; font-size: 0.85rem; }
+    .site-footer p { margin: 0 0 6px; }
+    .site-footer .footer-notice { margin-bottom: 12px; color: var(--chalk); }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 0 18px; }
+      .site-title { font-size: 1.7rem; }
+      .intro-title { font-size: 1.6rem; }
+      .post-num { font-size: 1.4rem; width: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="site-notice" role="note">
+    <div class="wrap">
+      <p>This is a fictional website created for educational purposes as part of MKTG:4400 at the University of Iowa. It is not a real business.</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-title" href="/the-weekly-snap/">The Weekly Snap</a>
+      <p class="site-tagline">Weekly rankings, start-sit calls, and waiver advice for deep-league fantasy football.</p>
+      <nav class="site-nav">
+        <a href="/the-weekly-snap/">All Posts</a>
+        <a href="/the-weekly-snap/rankings/">Rankings &amp; Start-Sit</a>
+        <a href="/the-weekly-snap/analysis/">Analysis &amp; Takes</a>
+        <a href="/the-weekly-snap/about/">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="intro">
+      <h1 class="intro-title">Fantasy football for leagues where the waiver wire is empty</h1>
+      <p>Most fantasy advice is written for 10- and 12-team leagues, where a decent starter is always one click away. In a 14- or 16-team league that stops being true, and the advice stops working with it. The Weekly Snap writes for the deep-league manager: weekly rankings, waiver adds, streaming picks, and plain-English strategy built around thin benches and thin waiver wires.</p>
+      <p>Start with the <a href="/the-weekly-snap/rankings/">rankings and start-sit posts</a> if you need a lineup answer this week, or read the <a href="/the-weekly-snap/analysis/">analysis and takes</a> if you want to understand why deep leagues play differently.</p>
+    </section>
+
+    <h2 class="list-heading">All posts</h2>
+    <section class="post-list">
+      <article class="post-row">
+        <span class="post-num">1</span>
+        <div class="post-row-body">
+          <a class="post-row-title" href="/the-weekly-snap/analysis/bye-week-replacement-rankings-deep-leagues/">Bye Week Replacement Rankings for Deep Leagues: Weeks 6 and 7</a>
+          <p class="post-row-meta">Posted Oct 15, 2026 in Analysis</p>
+          <p class="post-row-excerpt">Four teams are on bye in each of the next two weeks. With 32 teams in the league, four byes take about one team in eight out of action…</p>
+        </div>
+      </article>
+      <article class="post-row">
+        <span class="post-num">2</span>
+        <div class="post-row-body">
+          <a class="post-row-title" href="/the-weekly-snap/rankings/week-6-streaming-rankings-deep-leagues/">Week 6 Streaming Rankings for Deep Leagues: Tight Ends and Defenses</a>
+          <p class="post-row-meta">Posted Oct 15, 2026 in Rankings</p>
+          <p class="post-row-excerpt">Streaming in a 16-team league means picking from whoever is left, and with four teams on bye this week there is less left than usual…</p>
+        </div>
+      </article>
+      <article class="post-row">
+        <span class="post-num">3</span>
+        <div class="post-row-body">
+          <a class="post-row-title" href="/the-weekly-snap/rankings/week-6-deep-league-waiver-wire-adds/">Week 6 Deep-League Waiver Wire: Six Adds for 14- and 16-Team Leagues</a>
+          <p class="post-row-meta">Posted Oct 14, 2026 in Rankings</p>
+          <p class="post-row-excerpt">Four teams are on bye this week, the Bengals, Lions, Dolphins, and Vikings, which makes a deep-league waiver wire thinner than usual…</p>
+        </div>
+      </article>
+      <article class="post-row">
+        <span class="post-num">4</span>
+        <div class="post-row-body">
+          <a class="post-row-title" href="/the-weekly-snap/rankings/deep-league-ppr-flex-rankings-week-6/">Deep-League PPR Flex Rankings for Week 6, Ranked by How Sure You Can Be</a>
+          <p class="post-row-meta">Posted Oct 14, 2026 in Rankings</p>
+          <p class="post-row-excerpt">In a deep league the flex spot is really an availability contest. Everyone has the same four or five names to choose from…</p>
+        </div>
+      </article>
+      <article class="post-row">
+        <span class="post-num">5</span>
+        <div class="post-row-body">
+          <a class="post-row-title" href="/the-weekly-snap/analysis/16-team-waiver-wire-strategy/">16-Team Waiver Wire Strategy: How to Spend Your Budget When Everyone Is Hungry</a>
+          <p class="post-row-meta">Posted Oct 13, 2026 in Analysis</p>
+          <p class="post-row-excerpt">In a 16-team league the waiver wire is not a place to find bargains. It is an auction where every manager is bidding on the same four or five players…</p>
+        </div>
+      </article>
+      <article class="post-row">
+        <span class="post-num">6</span>
+        <div class="post-row-body">
+          <a class="post-row-title" href="/the-weekly-snap/analysis/why-12-team-rankings-fail-in-deep-leagues/">Why 12-Team Rankings Fail in 14- and 16-Team Leagues</a>
+          <p class="post-row-meta">Posted Oct 13, 2026 in Analysis</p>
+          <p class="post-row-excerpt">A ranking built for a 12-team league answers one question: who are the best players? A deep-league manager has to answer a harder one…</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-notice">This is a fictional website created for educational purposes as part of MKTG:4400 at the University of Iowa. It is not a real business.</p>
+      <p>The Weekly Snap. Built with Jekyll. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+</body>
+</html>
