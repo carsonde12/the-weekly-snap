@@ -3,25 +3,25 @@ layout: default
 title: Analysis & Takes
 permalink: /analysis/
 ---
-<section class="intro">
-  <h1 class="intro-title">Analysis and takes</h1>
+<section class="banner">
+  <h1 class="banner-title">Analysis and takes</h1>
   <p>Rankings tell you who to start. Analysis explains how to build a team that makes those choices easier. These longer pieces cover how deep leagues differ from standard ones, how to spend a waiver budget when every manager is hunting for the same handful of players, and how to get through bye weeks without a collapse.</p>
   <p>The numbers in these posts come from simple league math, and the opinions are labeled as opinions.</p>
 </section>
 
-<h2 class="list-heading">Analysis posts</h2>
-<section class="post-list">
+<div class="section-head"><h2>Analysis posts</h2></div>
+<div class="post-list list-wrap">
   {% assign cat_posts = site.categories.analysis %}
   {% for post in cat_posts %}
-    <article class="post-row">
-      <span class="post-num">{{ forloop.index }}</span>
-      <div class="post-row-body">
-        <a class="post-row-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <p class="post-row-meta">Posted {{ post.date | date: "%b %-d, %Y" }}</p>
-        {% if post.excerpt %}
-          <p class="post-row-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
-        {% endif %}
-      </div>
-    </article>
+  <article class="post-row">
+    <time class="post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}"><span class="m">{{ post.date | date: "%b" }}</span><span class="d">{{ post.date | date: "%-d" }}</span></time>
+    <div class="post-row-body">
+      <a class="post-row-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <p class="post-row-meta"><span class="tag tag-analysis">Analysis</span></p>
+      {% if post.excerpt %}
+      <p class="post-row-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
+      {% endif %}
+    </div>
+  </article>
   {% endfor %}
-</section>
+</div>

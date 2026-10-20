@@ -5,66 +5,72 @@ description: "A ranked top 150 of fantasy football players by rest-of-season val
 permalink: /top-150-ppr-rankings/
 ---
 <style>
-.rk-lead { color: var(--slate); font-size: 0.92rem; margin: -4px 0 18px; }
-.rk-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 14px; }
+.rk-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 34px 0 12px; }
 .rk-filter[hidden] { display: none; }
 .rk-filter button {
-  font: inherit; font-weight: 600; font-size: 0.9rem; cursor: pointer;
-  padding: 7px 14px; border: 2px solid var(--turf); background: transparent;
-  color: var(--turf); border-radius: 999px;
+  font: inherit; font-weight: 700; cursor: pointer;
+  padding: 8px 18px; border: 2px solid var(--ink); background: var(--paint); color: var(--ink);
 }
-.rk-filter button[aria-pressed="true"] { background: var(--turf); color: var(--chalk); }
-.rk-status { font-size: 0.85rem; color: var(--slate); margin: 0 0 10px; min-height: 1.3em; }
-.rk-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.97rem; }
+.rk-filter button:hover { background: var(--flag); }
+.rk-filter button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.rk-status { margin: 0 0 12px; min-height: 1.4em; font-size: 0.9rem; color: var(--slate); }
+.rk-table {
+  width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 1rem;
+  border: 3px solid var(--ink); background: var(--paint);
+}
 .rk-table thead th {
-  text-align: left; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--slate); padding: 8px 8px; border-bottom: 2px solid var(--turf);
+  text-align: left; font-weight: 700; padding: 10px 10px; background: var(--ink); color: #fff;
 }
-.rk-table td { padding: 9px 8px; border-bottom: 1px solid #d9d4c4; vertical-align: middle; }
+.rk-table td { padding: 9px 10px; border-top: 1px solid var(--rule); vertical-align: middle; }
 .rk-table .rk-c-rank { width: 15%; }
-.rk-table .rk-c-pos { width: 22%; }
+.rk-table .rk-c-pos { width: 21%; }
 .rk-table .rk-c-team { width: 17%; }
-.rk-n { font-family: var(--font-display); font-size: 1.25rem; color: var(--turf); line-height: 1; }
+.rk-n { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; line-height: 1; }
 .rk-name { font-weight: 700; overflow-wrap: anywhere; }
-.rk-team { font-family: var(--font-mono); font-weight: 600; font-size: 0.88rem; color: var(--turf); }
+.rk-team { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; letter-spacing: 0.04em; }
 .rk-tier th {
-  background: #e6e1d0; text-align: left; font-weight: 700; font-size: 0.88rem;
-  padding: 10px 8px; border-top: 2px solid var(--turf); border-bottom: 1px solid #d9d4c4;
+  padding: 10px 10px; background: var(--turf); color: #fff; text-align: left;
+  border-top: 3px solid var(--ink); font-weight: 600; font-size: 0.95rem;
 }
-.rk-tier th span { color: var(--slate); font-weight: 500; white-space: nowrap; }
+.rk-tier .rk-tier-name {
+  margin-right: 8px; font-family: var(--font-display); font-weight: 900; font-size: 1.35rem;
+  letter-spacing: 0.02em; text-transform: uppercase; color: var(--flag);
+}
+.rk-tier th span.rk-range { white-space: nowrap; opacity: 0.85; }
 .rk-pos {
-  display: inline-block; min-width: 3.2em; text-align: center; padding: 2px 8px;
-  border-radius: 4px; font-family: var(--font-mono); font-weight: 600; font-size: 0.8rem;
-  color: #fff;
+  display: inline-block; min-width: 3.5em; padding: 1px 8px; text-align: center;
+  font-weight: 800; font-size: 0.88rem; line-height: 1.5; color: #fff;
 }
-.rk-QB { background: var(--brick); }
+.rk-QB { background: var(--red); }
 .rk-RB { background: var(--turf); }
-.rk-WR { background: var(--gold); color: var(--ink); }
-.rk-TE { background: #5a6155; }
-.rk-method h2 { font-size: 1.3rem; margin: 2em 0 0.4em; }
-.rk-method p, .rk-method li { margin: 0.7em 0; }
-.rk-method a { color: var(--brick); }
-.rk-method ul { padding-left: 1.3em; }
+.rk-WR { background: var(--flag); color: var(--ink); }
+.rk-TE { background: var(--scrim); }
+.rk-method { margin-top: 12px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (max-width: 480px) {
-  .rk-table { font-size: 0.88rem; }
-  .rk-table td { padding: 8px 4px; }
-  .rk-table thead th { padding: 8px 4px; }
-  .rk-pos { min-width: 0; padding: 2px 5px; font-size: 0.74rem; }
-  .rk-n { font-size: 1.1rem; }
-  .rk-tier th { font-size: 0.8rem; padding: 9px 4px; }
+  .rk-table { font-size: 0.9rem; }
+  .rk-table td, .rk-table thead th { padding: 8px 5px; }
+  .rk-pos { min-width: 0; padding: 1px 5px; font-size: 0.8rem; }
+  .rk-n { font-size: 1.35rem; }
+  .rk-team { font-size: 1.05rem; }
+  .rk-tier th { padding: 9px 5px; font-size: 0.85rem; }
+  .rk-tier .rk-tier-name { font-size: 1.15rem; }
   .rk-table .rk-c-rank { width: 14%; }
-  .rk-table .rk-c-pos { width: 22%; }
-  .rk-table .rk-c-team { width: 16%; }
+  .rk-table .rk-c-pos { width: 23%; }
+  .rk-table .rk-c-team { width: 17%; }
 }
 </style>
 
-<section class="intro">
-  <h1 class="intro-title">Top 150 PPR fantasy football rankings for deep leagues</h1>
-  <p class="rk-lead">Rest-of-season values, full PPR, one starting quarterback. Current through Week 7 (October 20, 2026).</p>
+<section class="banner">
+  <h1 class="banner-title">Top 150 PPR fantasy football rankings for deep leagues</h1>
+  <p>Rest-of-season values, full PPR, one starting quarterback. Current through Week 7 (October 20, 2026).</p>
+</section>
+
+<div class="measure-wide">
+<div class="prose">
   <p>This is the list for managers who need to know who is actually worth a roster spot when every team has 16 or more players to fill. Each player is ranked by what he should be worth from here through the fantasy playoffs in a full-point-per-reception league, then grouped into tiers so you can see where the real drop-offs are. Use the tiers when you are trading or choosing between two players: moving between names in the same tier rarely matters, and moving across a tier line usually does.</p>
   <p>The list has 52 running backs, 59 wide receivers, 23 tight ends, and 16 quarterbacks. Quarterbacks sit lower than their raw points suggest because only one starts in most leagues. For this week's lineup decisions, pair the list with the <a href="{{ '/rankings/deep-league-ppr-flex-rankings-week-6/' | relative_url }}">deep-league PPR flex rankings</a>, and for roster-building see the guide to <a href="{{ '/analysis/16-team-waiver-wire-strategy/' | relative_url }}">waiver wire strategy in 16-team leagues</a>.</p>
-</section>
+</div>
 
 <div class="rk-filter" id="rk-filter" role="group" aria-label="Filter by position" hidden>
   <button type="button" data-pos="ALL" aria-pressed="true">All 150</button>
@@ -80,14 +86,14 @@ permalink: /top-150-ppr-rankings/
   <colgroup><col class="rk-c-rank"><col><col class="rk-c-pos"><col class="rk-c-team"></colgroup>
   <thead><tr><th scope="col">Rank</th><th scope="col">Player</th><th scope="col">Pos</th><th scope="col">Team</th></tr></thead>
   <tbody>
-<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 1: Set-and-forget cornerstones <span>(ranks 1-6)</span></th></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup"><span class="rk-tier-name">Tier 1</span> Set-and-forget cornerstones <span class="rk-range">(ranks 1-6)</span></th></tr>
 <tr data-pos="RB"><td class="rk-n">1</td><td class="rk-name">Jahmyr Gibbs</td><td><span class="rk-pos rk-RB">RB1</span></td><td class="rk-team">DET</td></tr>
 <tr data-pos="RB"><td class="rk-n">2</td><td class="rk-name">Kenneth Walker III</td><td><span class="rk-pos rk-RB">RB2</span></td><td class="rk-team">KC</td></tr>
 <tr data-pos="WR"><td class="rk-n">3</td><td class="rk-name">Jaxon Smith-Njigba</td><td><span class="rk-pos rk-WR">WR1</span></td><td class="rk-team">SEA</td></tr>
 <tr data-pos="RB"><td class="rk-n">4</td><td class="rk-name">Bijan Robinson</td><td><span class="rk-pos rk-RB">RB3</span></td><td class="rk-team">ATL</td></tr>
 <tr data-pos="WR"><td class="rk-n">5</td><td class="rk-name">Puka Nacua</td><td><span class="rk-pos rk-WR">WR2</span></td><td class="rk-team">LAR</td></tr>
 <tr data-pos="WR"><td class="rk-n">6</td><td class="rk-name">Ja&#x27;Marr Chase</td><td><span class="rk-pos rk-WR">WR3</span></td><td class="rk-team">CIN</td></tr>
-<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 2: Weekly difference-makers <span>(ranks 7-15)</span></th></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup"><span class="rk-tier-name">Tier 2</span> Weekly difference-makers <span class="rk-range">(ranks 7-15)</span></th></tr>
 <tr data-pos="WR"><td class="rk-n">7</td><td class="rk-name">CeeDee Lamb</td><td><span class="rk-pos rk-WR">WR4</span></td><td class="rk-team">DAL</td></tr>
 <tr data-pos="RB"><td class="rk-n">8</td><td class="rk-name">James Cook</td><td><span class="rk-pos rk-RB">RB4</span></td><td class="rk-team">BUF</td></tr>
 <tr data-pos="RB"><td class="rk-n">9</td><td class="rk-name">Christian McCaffrey</td><td><span class="rk-pos rk-RB">RB5</span></td><td class="rk-team">SF</td></tr>
@@ -97,7 +103,7 @@ permalink: /top-150-ppr-rankings/
 <tr data-pos="RB"><td class="rk-n">13</td><td class="rk-name">Kyren Williams</td><td><span class="rk-pos rk-RB">RB7</span></td><td class="rk-team">LAR</td></tr>
 <tr data-pos="RB"><td class="rk-n">14</td><td class="rk-name">Derrick Henry</td><td><span class="rk-pos rk-RB">RB8</span></td><td class="rk-team">BAL</td></tr>
 <tr data-pos="WR"><td class="rk-n">15</td><td class="rk-name">Chris Olave</td><td><span class="rk-pos rk-WR">WR6</span></td><td class="rk-team">NO</td></tr>
-<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 3: Locked-in starters <span>(ranks 16-30)</span></th></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup"><span class="rk-tier-name">Tier 3</span> Locked-in starters <span class="rk-range">(ranks 16-30)</span></th></tr>
 <tr data-pos="WR"><td class="rk-n">16</td><td class="rk-name">Malik Nabers</td><td><span class="rk-pos rk-WR">WR7</span></td><td class="rk-team">NYG</td></tr>
 <tr data-pos="RB"><td class="rk-n">17</td><td class="rk-name">Chuba Hubbard</td><td><span class="rk-pos rk-RB">RB9</span></td><td class="rk-team">CAR</td></tr>
 <tr data-pos="WR"><td class="rk-n">18</td><td class="rk-name">Justin Jefferson</td><td><span class="rk-pos rk-WR">WR8</span></td><td class="rk-team">MIN</td></tr>
@@ -113,7 +119,7 @@ permalink: /top-150-ppr-rankings/
 <tr data-pos="RB"><td class="rk-n">28</td><td class="rk-name">Chase Brown</td><td><span class="rk-pos rk-RB">RB12</span></td><td class="rk-team">CIN</td></tr>
 <tr data-pos="WR"><td class="rk-n">29</td><td class="rk-name">Tetairoa McMillan</td><td><span class="rk-pos rk-WR">WR15</span></td><td class="rk-team">CAR</td></tr>
 <tr data-pos="WR"><td class="rk-n">30</td><td class="rk-name">Garrett Wilson</td><td><span class="rk-pos rk-WR">WR16</span></td><td class="rk-team">NYJ</td></tr>
-<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 4: Strong starters with a flaw or two <span>(ranks 31-50)</span></th></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup"><span class="rk-tier-name">Tier 4</span> Strong starters with a flaw or two <span class="rk-range">(ranks 31-50)</span></th></tr>
 <tr data-pos="RB"><td class="rk-n">31</td><td class="rk-name">Breece Hall</td><td><span class="rk-pos rk-RB">RB13</span></td><td class="rk-team">NYJ</td></tr>
 <tr data-pos="RB"><td class="rk-n">32</td><td class="rk-name">Ashton Jeanty</td><td><span class="rk-pos rk-RB">RB14</span></td><td class="rk-team">LV</td></tr>
 <tr data-pos="RB"><td class="rk-n">33</td><td class="rk-name">Bhayshul Tuten</td><td><span class="rk-pos rk-RB">RB15</span></td><td class="rk-team">JAX</td></tr>
@@ -134,7 +140,7 @@ permalink: /top-150-ppr-rankings/
 <tr data-pos="WR"><td class="rk-n">48</td><td class="rk-name">Emeka Egbuka</td><td><span class="rk-pos rk-WR">WR23</span></td><td class="rk-team">TB</td></tr>
 <tr data-pos="WR"><td class="rk-n">49</td><td class="rk-name">Luther Burden III</td><td><span class="rk-pos rk-WR">WR24</span></td><td class="rk-team">CHI</td></tr>
 <tr data-pos="WR"><td class="rk-n">50</td><td class="rk-name">Stefon Diggs</td><td><span class="rk-pos rk-WR">WR25</span></td><td class="rk-team">WAS</td></tr>
-<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 5: Flex-plus names <span>(ranks 51-75)</span></th></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup"><span class="rk-tier-name">Tier 5</span> Flex-plus names <span class="rk-range">(ranks 51-75)</span></th></tr>
 <tr data-pos="TE"><td class="rk-n">51</td><td class="rk-name">Colston Loveland</td><td><span class="rk-pos rk-TE">TE6</span></td><td class="rk-team">CHI</td></tr>
 <tr data-pos="WR"><td class="rk-n">52</td><td class="rk-name">Carnell Tate</td><td><span class="rk-pos rk-WR">WR26</span></td><td class="rk-team">TEN</td></tr>
 <tr data-pos="WR"><td class="rk-n">53</td><td class="rk-name">Rashee Rice</td><td><span class="rk-pos rk-WR">WR27</span></td><td class="rk-team">KC</td></tr>
@@ -160,7 +166,7 @@ permalink: /top-150-ppr-rankings/
 <tr data-pos="TE"><td class="rk-n">73</td><td class="rk-name">Dalton Kincaid</td><td><span class="rk-pos rk-TE">TE11</span></td><td class="rk-team">BUF</td></tr>
 <tr data-pos="WR"><td class="rk-n">74</td><td class="rk-name">Jaylen Waddle</td><td><span class="rk-pos rk-WR">WR34</span></td><td class="rk-team">DEN</td></tr>
 <tr data-pos="WR"><td class="rk-n">75</td><td class="rk-name">Denzel Boston</td><td><span class="rk-pos rk-WR">WR35</span></td><td class="rk-team">CLE</td></tr>
-<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 6: Matchup-dependent flex plays <span>(ranks 76-100)</span></th></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup"><span class="rk-tier-name">Tier 6</span> Matchup-dependent flex plays <span class="rk-range">(ranks 76-100)</span></th></tr>
 <tr data-pos="RB"><td class="rk-n">76</td><td class="rk-name">Cam Skattebo</td><td><span class="rk-pos rk-RB">RB25</span></td><td class="rk-team">NYG</td></tr>
 <tr data-pos="RB"><td class="rk-n">77</td><td class="rk-name">Woody Marks</td><td><span class="rk-pos rk-RB">RB26</span></td><td class="rk-team">HOU</td></tr>
 <tr data-pos="QB"><td class="rk-n">78</td><td class="rk-name">Jared Goff</td><td><span class="rk-pos rk-QB">QB6</span></td><td class="rk-team">DET</td></tr>
@@ -186,7 +192,7 @@ permalink: /top-150-ppr-rankings/
 <tr data-pos="WR"><td class="rk-n">98</td><td class="rk-name">Antonio Williams</td><td><span class="rk-pos rk-WR">WR40</span></td><td class="rk-team">WAS</td></tr>
 <tr data-pos="RB"><td class="rk-n">99</td><td class="rk-name">Tony Pollard</td><td><span class="rk-pos rk-RB">RB37</span></td><td class="rk-team">TEN</td></tr>
 <tr data-pos="TE"><td class="rk-n">100</td><td class="rk-name">Harold Fannin Jr.</td><td><span class="rk-pos rk-TE">TE13</span></td><td class="rk-team">CLE</td></tr>
-<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 7: Deep-bench depth <span>(ranks 101-125)</span></th></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup"><span class="rk-tier-name">Tier 7</span> Deep-bench depth <span class="rk-range">(ranks 101-125)</span></th></tr>
 <tr data-pos="WR"><td class="rk-n">101</td><td class="rk-name">Keenan Allen</td><td><span class="rk-pos rk-WR">WR41</span></td><td class="rk-team">IND</td></tr>
 <tr data-pos="TE"><td class="rk-n">102</td><td class="rk-name">Terrance Ferguson</td><td><span class="rk-pos rk-TE">TE14</span></td><td class="rk-team">LAR</td></tr>
 <tr data-pos="RB"><td class="rk-n">103</td><td class="rk-name">Emanuel Wilson</td><td><span class="rk-pos rk-RB">RB38</span></td><td class="rk-team">SEA</td></tr>
@@ -212,7 +218,7 @@ permalink: /top-150-ppr-rankings/
 <tr data-pos="WR"><td class="rk-n">123</td><td class="rk-name">Treylon Burks</td><td><span class="rk-pos rk-WR">WR47</span></td><td class="rk-team">WAS</td></tr>
 <tr data-pos="WR"><td class="rk-n">124</td><td class="rk-name">Malik Washington</td><td><span class="rk-pos rk-WR">WR48</span></td><td class="rk-team">MIA</td></tr>
 <tr data-pos="RB"><td class="rk-n">125</td><td class="rk-name">Mike Washington Jr.</td><td><span class="rk-pos rk-RB">RB45</span></td><td class="rk-team">LV</td></tr>
-<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 8: Roster-spot holds and handcuffs <span>(ranks 126-150)</span></th></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup"><span class="rk-tier-name">Tier 8</span> Roster-spot holds and handcuffs <span class="rk-range">(ranks 126-150)</span></th></tr>
 <tr data-pos="QB"><td class="rk-n">126</td><td class="rk-name">Tyler Shough</td><td><span class="rk-pos rk-QB">QB15</span></td><td class="rk-team">NO</td></tr>
 <tr data-pos="WR"><td class="rk-n">127</td><td class="rk-name">Jordan Addison</td><td><span class="rk-pos rk-WR">WR49</span></td><td class="rk-team">MIN</td></tr>
 <tr data-pos="WR"><td class="rk-n">128</td><td class="rk-name">Wan&#x27;Dale Robinson</td><td><span class="rk-pos rk-WR">WR50</span></td><td class="rk-team">TEN</td></tr>
@@ -241,7 +247,7 @@ permalink: /top-150-ppr-rankings/
   </tbody>
 </table>
 
-<section class="rk-method">
+<section class="rk-method prose">
   <h2>How this list was built</h2>
   <p>Every rank on this page was produced by an AI model for a class project, and it is an opinion, not a projection. It starts from two public sources, both published on October 20, 2026:</p>
   <ul>
@@ -259,6 +265,7 @@ permalink: /top-150-ppr-rankings/
   <h2>Read this before you trade</h2>
   <p>Rosters, roles, and injuries change daily. Check each player's status before you act, and treat anyone listed as questionable or out as a different player until he is back. Rookies and players with new teams carry the widest range of outcomes. The list is refreshed each week during the season.</p>
 </section>
+</div>
 
 <script>
 (function () {

@@ -3,25 +3,25 @@ layout: default
 title: Rankings & Start-Sit
 permalink: /rankings/
 ---
-<section class="intro">
-  <h1 class="intro-title">Rankings and start-sit calls</h1>
+<section class="banner">
+  <h1 class="banner-title">Rankings and start-sit calls</h1>
   <p>Every ranking here is written for leagues of 14 teams or more. That changes the questions: a player who is a waiver afterthought in a 12-team league can be a must-start flex in a 16-team league, and a bye week can leave you choosing between two players nobody else wanted. Each post names the player, the matchup, and the reason, and tells you how much confidence to put in it.</p>
   <p>Roles and injury statuses change fast, so every post is dated and says which day its information is current through. Check inactives before kickoff.</p>
 </section>
 
-<h2 class="list-heading">Rankings posts</h2>
-<section class="post-list">
+<div class="section-head"><h2>Rankings posts</h2></div>
+<div class="post-list list-wrap">
   {% assign cat_posts = site.categories.rankings %}
   {% for post in cat_posts %}
-    <article class="post-row">
-      <span class="post-num">{{ forloop.index }}</span>
-      <div class="post-row-body">
-        <a class="post-row-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <p class="post-row-meta">Posted {{ post.date | date: "%b %-d, %Y" }}</p>
-        {% if post.excerpt %}
-          <p class="post-row-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
-        {% endif %}
-      </div>
-    </article>
+  <article class="post-row">
+    <time class="post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}"><span class="m">{{ post.date | date: "%b" }}</span><span class="d">{{ post.date | date: "%-d" }}</span></time>
+    <div class="post-row-body">
+      <a class="post-row-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <p class="post-row-meta"><span class="tag tag-rankings">Rankings</span></p>
+      {% if post.excerpt %}
+      <p class="post-row-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
+      {% endif %}
+    </div>
+  </article>
   {% endfor %}
-</section>
+</div>

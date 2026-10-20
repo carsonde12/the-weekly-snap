@@ -2,6 +2,7 @@
 layout: default
 title: About
 permalink: /about/
+prose: true
 ---
 
 # About The Weekly Snap
