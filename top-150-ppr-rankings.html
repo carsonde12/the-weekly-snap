@@ -1,0 +1,296 @@
+---
+layout: default
+title: "Top 150 PPR Fantasy Football Rankings: Deep League Values"
+description: "A ranked top 150 of fantasy football players by rest-of-season value in full-PPR leagues, tiered and adjusted for 14- and 16-team deep leagues. Current through Week 7, 2026."
+permalink: /top-150-ppr-rankings/
+---
+<style>
+.rk-lead { color: var(--slate); font-size: 0.92rem; margin: -4px 0 18px; }
+.rk-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 14px; }
+.rk-filter[hidden] { display: none; }
+.rk-filter button {
+  font: inherit; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+  padding: 7px 14px; border: 2px solid var(--turf); background: transparent;
+  color: var(--turf); border-radius: 999px;
+}
+.rk-filter button[aria-pressed="true"] { background: var(--turf); color: var(--chalk); }
+.rk-status { font-size: 0.85rem; color: var(--slate); margin: 0 0 10px; min-height: 1.3em; }
+.rk-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.97rem; }
+.rk-table thead th {
+  text-align: left; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--slate); padding: 8px 8px; border-bottom: 2px solid var(--turf);
+}
+.rk-table td { padding: 9px 8px; border-bottom: 1px solid #d9d4c4; vertical-align: middle; }
+.rk-table .rk-c-rank { width: 15%; }
+.rk-table .rk-c-pos { width: 22%; }
+.rk-table .rk-c-team { width: 17%; }
+.rk-n { font-family: var(--font-display); font-size: 1.25rem; color: var(--turf); line-height: 1; }
+.rk-name { font-weight: 700; overflow-wrap: anywhere; }
+.rk-team { font-family: var(--font-mono); font-weight: 600; font-size: 0.88rem; color: var(--turf); }
+.rk-tier th {
+  background: #e6e1d0; text-align: left; font-weight: 700; font-size: 0.88rem;
+  padding: 10px 8px; border-top: 2px solid var(--turf); border-bottom: 1px solid #d9d4c4;
+}
+.rk-tier th span { color: var(--slate); font-weight: 500; white-space: nowrap; }
+.rk-pos {
+  display: inline-block; min-width: 3.2em; text-align: center; padding: 2px 8px;
+  border-radius: 4px; font-family: var(--font-mono); font-weight: 600; font-size: 0.8rem;
+  color: #fff;
+}
+.rk-QB { background: var(--brick); }
+.rk-RB { background: var(--turf); }
+.rk-WR { background: var(--gold); color: var(--ink); }
+.rk-TE { background: #5a6155; }
+.rk-method h2 { font-size: 1.3rem; margin: 2em 0 0.4em; }
+.rk-method p, .rk-method li { margin: 0.7em 0; }
+.rk-method a { color: var(--brick); }
+.rk-method ul { padding-left: 1.3em; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 480px) {
+  .rk-table { font-size: 0.88rem; }
+  .rk-table td { padding: 8px 4px; }
+  .rk-table thead th { padding: 8px 4px; }
+  .rk-pos { min-width: 0; padding: 2px 5px; font-size: 0.74rem; }
+  .rk-n { font-size: 1.1rem; }
+  .rk-tier th { font-size: 0.8rem; padding: 9px 4px; }
+  .rk-table .rk-c-rank { width: 14%; }
+  .rk-table .rk-c-pos { width: 22%; }
+  .rk-table .rk-c-team { width: 16%; }
+}
+</style>
+
+<section class="intro">
+  <h1 class="intro-title">Top 150 PPR fantasy football rankings for deep leagues</h1>
+  <p class="rk-lead">Rest-of-season values, full PPR, one starting quarterback. Current through Week 7 (October 20, 2026).</p>
+  <p>This is the list for managers who need to know who is actually worth a roster spot when every team has 16 or more players to fill. Each player is ranked by what he should be worth from here through the fantasy playoffs in a full-point-per-reception league, then grouped into tiers so you can see where the real drop-offs are. Use the tiers when you are trading or choosing between two players: moving between names in the same tier rarely matters, and moving across a tier line usually does.</p>
+  <p>The list has 52 running backs, 59 wide receivers, 23 tight ends, and 16 quarterbacks. Quarterbacks sit lower than their raw points suggest because only one starts in most leagues. For this week's lineup decisions, pair the list with the <a href="{{ '/rankings/deep-league-ppr-flex-rankings-week-6/' | relative_url }}">deep-league PPR flex rankings</a>, and for roster-building see the guide to <a href="{{ '/analysis/16-team-waiver-wire-strategy/' | relative_url }}">waiver wire strategy in 16-team leagues</a>.</p>
+</section>
+
+<div class="rk-filter" id="rk-filter" role="group" aria-label="Filter by position" hidden>
+  <button type="button" data-pos="ALL" aria-pressed="true">All 150</button>
+  <button type="button" data-pos="QB" aria-pressed="false">QB</button>
+  <button type="button" data-pos="RB" aria-pressed="false">RB</button>
+  <button type="button" data-pos="WR" aria-pressed="false">WR</button>
+  <button type="button" data-pos="TE" aria-pressed="false">TE</button>
+</div>
+<p class="rk-status" id="rk-status" aria-live="polite"></p>
+
+<table class="rk-table" id="rk-table">
+  <caption class="sr-only">Top 150 fantasy football players by full-PPR rest-of-season value, with position rank and team</caption>
+  <colgroup><col class="rk-c-rank"><col><col class="rk-c-pos"><col class="rk-c-team"></colgroup>
+  <thead><tr><th scope="col">Rank</th><th scope="col">Player</th><th scope="col">Pos</th><th scope="col">Team</th></tr></thead>
+  <tbody>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 1: Set-and-forget cornerstones <span>(ranks 1-6)</span></th></tr>
+<tr data-pos="RB"><td class="rk-n">1</td><td class="rk-name">Jahmyr Gibbs</td><td><span class="rk-pos rk-RB">RB1</span></td><td class="rk-team">DET</td></tr>
+<tr data-pos="RB"><td class="rk-n">2</td><td class="rk-name">Kenneth Walker III</td><td><span class="rk-pos rk-RB">RB2</span></td><td class="rk-team">KC</td></tr>
+<tr data-pos="WR"><td class="rk-n">3</td><td class="rk-name">Jaxon Smith-Njigba</td><td><span class="rk-pos rk-WR">WR1</span></td><td class="rk-team">SEA</td></tr>
+<tr data-pos="RB"><td class="rk-n">4</td><td class="rk-name">Bijan Robinson</td><td><span class="rk-pos rk-RB">RB3</span></td><td class="rk-team">ATL</td></tr>
+<tr data-pos="WR"><td class="rk-n">5</td><td class="rk-name">Puka Nacua</td><td><span class="rk-pos rk-WR">WR2</span></td><td class="rk-team">LAR</td></tr>
+<tr data-pos="WR"><td class="rk-n">6</td><td class="rk-name">Ja&#x27;Marr Chase</td><td><span class="rk-pos rk-WR">WR3</span></td><td class="rk-team">CIN</td></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 2: Weekly difference-makers <span>(ranks 7-15)</span></th></tr>
+<tr data-pos="WR"><td class="rk-n">7</td><td class="rk-name">CeeDee Lamb</td><td><span class="rk-pos rk-WR">WR4</span></td><td class="rk-team">DAL</td></tr>
+<tr data-pos="RB"><td class="rk-n">8</td><td class="rk-name">James Cook</td><td><span class="rk-pos rk-RB">RB4</span></td><td class="rk-team">BUF</td></tr>
+<tr data-pos="RB"><td class="rk-n">9</td><td class="rk-name">Christian McCaffrey</td><td><span class="rk-pos rk-RB">RB5</span></td><td class="rk-team">SF</td></tr>
+<tr data-pos="WR"><td class="rk-n">10</td><td class="rk-name">Amon-Ra St. Brown</td><td><span class="rk-pos rk-WR">WR5</span></td><td class="rk-team">DET</td></tr>
+<tr data-pos="RB"><td class="rk-n">11</td><td class="rk-name">Jonathan Taylor</td><td><span class="rk-pos rk-RB">RB6</span></td><td class="rk-team">IND</td></tr>
+<tr data-pos="TE"><td class="rk-n">12</td><td class="rk-name">Brock Bowers</td><td><span class="rk-pos rk-TE">TE1</span></td><td class="rk-team">LV</td></tr>
+<tr data-pos="RB"><td class="rk-n">13</td><td class="rk-name">Kyren Williams</td><td><span class="rk-pos rk-RB">RB7</span></td><td class="rk-team">LAR</td></tr>
+<tr data-pos="RB"><td class="rk-n">14</td><td class="rk-name">Derrick Henry</td><td><span class="rk-pos rk-RB">RB8</span></td><td class="rk-team">BAL</td></tr>
+<tr data-pos="WR"><td class="rk-n">15</td><td class="rk-name">Chris Olave</td><td><span class="rk-pos rk-WR">WR6</span></td><td class="rk-team">NO</td></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 3: Locked-in starters <span>(ranks 16-30)</span></th></tr>
+<tr data-pos="WR"><td class="rk-n">16</td><td class="rk-name">Malik Nabers</td><td><span class="rk-pos rk-WR">WR7</span></td><td class="rk-team">NYG</td></tr>
+<tr data-pos="RB"><td class="rk-n">17</td><td class="rk-name">Chuba Hubbard</td><td><span class="rk-pos rk-RB">RB9</span></td><td class="rk-team">CAR</td></tr>
+<tr data-pos="WR"><td class="rk-n">18</td><td class="rk-name">Justin Jefferson</td><td><span class="rk-pos rk-WR">WR8</span></td><td class="rk-team">MIN</td></tr>
+<tr data-pos="WR"><td class="rk-n">19</td><td class="rk-name">Zay Flowers</td><td><span class="rk-pos rk-WR">WR9</span></td><td class="rk-team">BAL</td></tr>
+<tr data-pos="WR"><td class="rk-n">20</td><td class="rk-name">Drake London</td><td><span class="rk-pos rk-WR">WR10</span></td><td class="rk-team">ATL</td></tr>
+<tr data-pos="RB"><td class="rk-n">21</td><td class="rk-name">Javonte Williams</td><td><span class="rk-pos rk-RB">RB10</span></td><td class="rk-team">DAL</td></tr>
+<tr data-pos="WR"><td class="rk-n">22</td><td class="rk-name">Christian Watson</td><td><span class="rk-pos rk-WR">WR11</span></td><td class="rk-team">GB</td></tr>
+<tr data-pos="WR"><td class="rk-n">23</td><td class="rk-name">Nico Collins</td><td><span class="rk-pos rk-WR">WR12</span></td><td class="rk-team">HOU</td></tr>
+<tr data-pos="WR"><td class="rk-n">24</td><td class="rk-name">Parker Washington</td><td><span class="rk-pos rk-WR">WR13</span></td><td class="rk-team">JAX</td></tr>
+<tr data-pos="TE"><td class="rk-n">25</td><td class="rk-name">Trey McBride</td><td><span class="rk-pos rk-TE">TE2</span></td><td class="rk-team">ARI</td></tr>
+<tr data-pos="RB"><td class="rk-n">26</td><td class="rk-name">D&#x27;Andre Swift</td><td><span class="rk-pos rk-RB">RB11</span></td><td class="rk-team">CHI</td></tr>
+<tr data-pos="WR"><td class="rk-n">27</td><td class="rk-name">Matthew Golden</td><td><span class="rk-pos rk-WR">WR14</span></td><td class="rk-team">GB</td></tr>
+<tr data-pos="RB"><td class="rk-n">28</td><td class="rk-name">Chase Brown</td><td><span class="rk-pos rk-RB">RB12</span></td><td class="rk-team">CIN</td></tr>
+<tr data-pos="WR"><td class="rk-n">29</td><td class="rk-name">Tetairoa McMillan</td><td><span class="rk-pos rk-WR">WR15</span></td><td class="rk-team">CAR</td></tr>
+<tr data-pos="WR"><td class="rk-n">30</td><td class="rk-name">Garrett Wilson</td><td><span class="rk-pos rk-WR">WR16</span></td><td class="rk-team">NYJ</td></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 4: Strong starters with a flaw or two <span>(ranks 31-50)</span></th></tr>
+<tr data-pos="RB"><td class="rk-n">31</td><td class="rk-name">Breece Hall</td><td><span class="rk-pos rk-RB">RB13</span></td><td class="rk-team">NYJ</td></tr>
+<tr data-pos="RB"><td class="rk-n">32</td><td class="rk-name">Ashton Jeanty</td><td><span class="rk-pos rk-RB">RB14</span></td><td class="rk-team">LV</td></tr>
+<tr data-pos="RB"><td class="rk-n">33</td><td class="rk-name">Bhayshul Tuten</td><td><span class="rk-pos rk-RB">RB15</span></td><td class="rk-team">JAX</td></tr>
+<tr data-pos="RB"><td class="rk-n">34</td><td class="rk-name">Jaylen Warren</td><td><span class="rk-pos rk-RB">RB16</span></td><td class="rk-team">PIT</td></tr>
+<tr data-pos="TE"><td class="rk-n">35</td><td class="rk-name">George Kittle</td><td><span class="rk-pos rk-TE">TE3</span></td><td class="rk-team">SF</td></tr>
+<tr data-pos="RB"><td class="rk-n">36</td><td class="rk-name">Bucky Irving</td><td><span class="rk-pos rk-RB">RB17</span></td><td class="rk-team">TB</td></tr>
+<tr data-pos="QB"><td class="rk-n">37</td><td class="rk-name">Josh Allen</td><td><span class="rk-pos rk-QB">QB1</span></td><td class="rk-team">BUF</td></tr>
+<tr data-pos="WR"><td class="rk-n">38</td><td class="rk-name">DeVonta Smith</td><td><span class="rk-pos rk-WR">WR17</span></td><td class="rk-team">PHI</td></tr>
+<tr data-pos="WR"><td class="rk-n">39</td><td class="rk-name">George Pickens</td><td><span class="rk-pos rk-WR">WR18</span></td><td class="rk-team">DAL</td></tr>
+<tr data-pos="RB"><td class="rk-n">40</td><td class="rk-name">Josh Jacobs</td><td><span class="rk-pos rk-RB">RB18</span></td><td class="rk-team">GB</td></tr>
+<tr data-pos="WR"><td class="rk-n">41</td><td class="rk-name">A.J. Brown</td><td><span class="rk-pos rk-WR">WR19</span></td><td class="rk-team">NE</td></tr>
+<tr data-pos="TE"><td class="rk-n">42</td><td class="rk-name">Sam LaPorta</td><td><span class="rk-pos rk-TE">TE4</span></td><td class="rk-team">DET</td></tr>
+<tr data-pos="WR"><td class="rk-n">43</td><td class="rk-name">Jalen Coker</td><td><span class="rk-pos rk-WR">WR20</span></td><td class="rk-team">CAR</td></tr>
+<tr data-pos="WR"><td class="rk-n">44</td><td class="rk-name">Tee Higgins</td><td><span class="rk-pos rk-WR">WR21</span></td><td class="rk-team">CIN</td></tr>
+<tr data-pos="WR"><td class="rk-n">45</td><td class="rk-name">Mike Evans</td><td><span class="rk-pos rk-WR">WR22</span></td><td class="rk-team">SF</td></tr>
+<tr data-pos="TE"><td class="rk-n">46</td><td class="rk-name">Isaiah Likely</td><td><span class="rk-pos rk-TE">TE5</span></td><td class="rk-team">NYG</td></tr>
+<tr data-pos="RB"><td class="rk-n">47</td><td class="rk-name">Saquon Barkley</td><td><span class="rk-pos rk-RB">RB19</span></td><td class="rk-team">PHI</td></tr>
+<tr data-pos="WR"><td class="rk-n">48</td><td class="rk-name">Emeka Egbuka</td><td><span class="rk-pos rk-WR">WR23</span></td><td class="rk-team">TB</td></tr>
+<tr data-pos="WR"><td class="rk-n">49</td><td class="rk-name">Luther Burden III</td><td><span class="rk-pos rk-WR">WR24</span></td><td class="rk-team">CHI</td></tr>
+<tr data-pos="WR"><td class="rk-n">50</td><td class="rk-name">Stefon Diggs</td><td><span class="rk-pos rk-WR">WR25</span></td><td class="rk-team">WAS</td></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 5: Flex-plus names <span>(ranks 51-75)</span></th></tr>
+<tr data-pos="TE"><td class="rk-n">51</td><td class="rk-name">Colston Loveland</td><td><span class="rk-pos rk-TE">TE6</span></td><td class="rk-team">CHI</td></tr>
+<tr data-pos="WR"><td class="rk-n">52</td><td class="rk-name">Carnell Tate</td><td><span class="rk-pos rk-WR">WR26</span></td><td class="rk-team">TEN</td></tr>
+<tr data-pos="WR"><td class="rk-n">53</td><td class="rk-name">Rashee Rice</td><td><span class="rk-pos rk-WR">WR27</span></td><td class="rk-team">KC</td></tr>
+<tr data-pos="WR"><td class="rk-n">54</td><td class="rk-name">Michael Wilson</td><td><span class="rk-pos rk-WR">WR28</span></td><td class="rk-team">ARI</td></tr>
+<tr data-pos="RB"><td class="rk-n">55</td><td class="rk-name">Rhamondre Stevenson</td><td><span class="rk-pos rk-RB">RB20</span></td><td class="rk-team">NE</td></tr>
+<tr data-pos="WR"><td class="rk-n">56</td><td class="rk-name">DJ Moore</td><td><span class="rk-pos rk-WR">WR29</span></td><td class="rk-team">BUF</td></tr>
+<tr data-pos="TE"><td class="rk-n">57</td><td class="rk-name">Tyler Warren</td><td><span class="rk-pos rk-TE">TE7</span></td><td class="rk-team">IND</td></tr>
+<tr data-pos="WR"><td class="rk-n">58</td><td class="rk-name">DK Metcalf</td><td><span class="rk-pos rk-WR">WR30</span></td><td class="rk-team">PIT</td></tr>
+<tr data-pos="WR"><td class="rk-n">59</td><td class="rk-name">Jameson Williams</td><td><span class="rk-pos rk-WR">WR31</span></td><td class="rk-team">DET</td></tr>
+<tr data-pos="RB"><td class="rk-n">60</td><td class="rk-name">Jeremiyah Love</td><td><span class="rk-pos rk-RB">RB21</span></td><td class="rk-team">ARI</td></tr>
+<tr data-pos="QB"><td class="rk-n">61</td><td class="rk-name">Drake Maye</td><td><span class="rk-pos rk-QB">QB2</span></td><td class="rk-team">NE</td></tr>
+<tr data-pos="WR"><td class="rk-n">62</td><td class="rk-name">Germie Bernard</td><td><span class="rk-pos rk-WR">WR32</span></td><td class="rk-team">PIT</td></tr>
+<tr data-pos="TE"><td class="rk-n">63</td><td class="rk-name">Tucker Kraft</td><td><span class="rk-pos rk-TE">TE8</span></td><td class="rk-team">GB</td></tr>
+<tr data-pos="RB"><td class="rk-n">64</td><td class="rk-name">Quinshon Judkins</td><td><span class="rk-pos rk-RB">RB22</span></td><td class="rk-team">CLE</td></tr>
+<tr data-pos="TE"><td class="rk-n">65</td><td class="rk-name">Travis Kelce</td><td><span class="rk-pos rk-TE">TE9</span></td><td class="rk-team">KC</td></tr>
+<tr data-pos="QB"><td class="rk-n">66</td><td class="rk-name">Lamar Jackson</td><td><span class="rk-pos rk-QB">QB3</span></td><td class="rk-team">BAL</td></tr>
+<tr data-pos="RB"><td class="rk-n">67</td><td class="rk-name">Ollie Gordon</td><td><span class="rk-pos rk-RB">RB23</span></td><td class="rk-team">MIA</td></tr>
+<tr data-pos="TE"><td class="rk-n">68</td><td class="rk-name">Kyle Pitts</td><td><span class="rk-pos rk-TE">TE10</span></td><td class="rk-team">ATL</td></tr>
+<tr data-pos="QB"><td class="rk-n">69</td><td class="rk-name">Brock Purdy</td><td><span class="rk-pos rk-QB">QB4</span></td><td class="rk-team">SF</td></tr>
+<tr data-pos="WR"><td class="rk-n">70</td><td class="rk-name">Ladd McConkey</td><td><span class="rk-pos rk-WR">WR33</span></td><td class="rk-team">LAC</td></tr>
+<tr data-pos="QB"><td class="rk-n">71</td><td class="rk-name">Joe Burrow</td><td><span class="rk-pos rk-QB">QB5</span></td><td class="rk-team">CIN</td></tr>
+<tr data-pos="RB"><td class="rk-n">72</td><td class="rk-name">Travis Etienne Jr.</td><td><span class="rk-pos rk-RB">RB24</span></td><td class="rk-team">NO</td></tr>
+<tr data-pos="TE"><td class="rk-n">73</td><td class="rk-name">Dalton Kincaid</td><td><span class="rk-pos rk-TE">TE11</span></td><td class="rk-team">BUF</td></tr>
+<tr data-pos="WR"><td class="rk-n">74</td><td class="rk-name">Jaylen Waddle</td><td><span class="rk-pos rk-WR">WR34</span></td><td class="rk-team">DEN</td></tr>
+<tr data-pos="WR"><td class="rk-n">75</td><td class="rk-name">Denzel Boston</td><td><span class="rk-pos rk-WR">WR35</span></td><td class="rk-team">CLE</td></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 6: Matchup-dependent flex plays <span>(ranks 76-100)</span></th></tr>
+<tr data-pos="RB"><td class="rk-n">76</td><td class="rk-name">Cam Skattebo</td><td><span class="rk-pos rk-RB">RB25</span></td><td class="rk-team">NYG</td></tr>
+<tr data-pos="RB"><td class="rk-n">77</td><td class="rk-name">Woody Marks</td><td><span class="rk-pos rk-RB">RB26</span></td><td class="rk-team">HOU</td></tr>
+<tr data-pos="QB"><td class="rk-n">78</td><td class="rk-name">Jared Goff</td><td><span class="rk-pos rk-QB">QB6</span></td><td class="rk-team">DET</td></tr>
+<tr data-pos="WR"><td class="rk-n">79</td><td class="rk-name">Tre Tucker</td><td><span class="rk-pos rk-WR">WR36</span></td><td class="rk-team">LV</td></tr>
+<tr data-pos="RB"><td class="rk-n">80</td><td class="rk-name">Omarion Hampton</td><td><span class="rk-pos rk-RB">RB27</span></td><td class="rk-team">LAC</td></tr>
+<tr data-pos="QB"><td class="rk-n">81</td><td class="rk-name">Caleb Williams</td><td><span class="rk-pos rk-QB">QB7</span></td><td class="rk-team">CHI</td></tr>
+<tr data-pos="RB"><td class="rk-n">82</td><td class="rk-name">Jordan Mason</td><td><span class="rk-pos rk-RB">RB28</span></td><td class="rk-team">MIN</td></tr>
+<tr data-pos="QB"><td class="rk-n">83</td><td class="rk-name">Jayden Daniels</td><td><span class="rk-pos rk-QB">QB8</span></td><td class="rk-team">WAS</td></tr>
+<tr data-pos="QB"><td class="rk-n">84</td><td class="rk-name">Trevor Lawrence</td><td><span class="rk-pos rk-QB">QB9</span></td><td class="rk-team">JAX</td></tr>
+<tr data-pos="TE"><td class="rk-n">85</td><td class="rk-name">Dallas Goedert</td><td><span class="rk-pos rk-TE">TE12</span></td><td class="rk-team">PHI</td></tr>
+<tr data-pos="RB"><td class="rk-n">86</td><td class="rk-name">Rachaad White</td><td><span class="rk-pos rk-RB">RB29</span></td><td class="rk-team">WAS</td></tr>
+<tr data-pos="RB"><td class="rk-n">87</td><td class="rk-name">Aaron Jones</td><td><span class="rk-pos rk-RB">RB30</span></td><td class="rk-team">MIN</td></tr>
+<tr data-pos="RB"><td class="rk-n">88</td><td class="rk-name">J.K. Dobbins</td><td><span class="rk-pos rk-RB">RB31</span></td><td class="rk-team">DEN</td></tr>
+<tr data-pos="RB"><td class="rk-n">89</td><td class="rk-name">Zach Charbonnet</td><td><span class="rk-pos rk-RB">RB32</span></td><td class="rk-team">SEA</td></tr>
+<tr data-pos="RB"><td class="rk-n">90</td><td class="rk-name">Kyle Monangai</td><td><span class="rk-pos rk-RB">RB33</span></td><td class="rk-team">CHI</td></tr>
+<tr data-pos="QB"><td class="rk-n">91</td><td class="rk-name">Bryce Young</td><td><span class="rk-pos rk-QB">QB10</span></td><td class="rk-team">CAR</td></tr>
+<tr data-pos="WR"><td class="rk-n">92</td><td class="rk-name">Marvin Harrison Jr.</td><td><span class="rk-pos rk-WR">WR37</span></td><td class="rk-team">HOU</td></tr>
+<tr data-pos="WR"><td class="rk-n">93</td><td class="rk-name">Deebo Samuel Sr.</td><td><span class="rk-pos rk-WR">WR38</span></td><td class="rk-team">SF</td></tr>
+<tr data-pos="WR"><td class="rk-n">94</td><td class="rk-name">Rome Odunze</td><td><span class="rk-pos rk-WR">WR39</span></td><td class="rk-team">CHI</td></tr>
+<tr data-pos="RB"><td class="rk-n">95</td><td class="rk-name">Braelon Allen</td><td><span class="rk-pos rk-RB">RB34</span></td><td class="rk-team">NYJ</td></tr>
+<tr data-pos="RB"><td class="rk-n">96</td><td class="rk-name">David Montgomery</td><td><span class="rk-pos rk-RB">RB35</span></td><td class="rk-team">HOU</td></tr>
+<tr data-pos="RB"><td class="rk-n">97</td><td class="rk-name">Blake Corum</td><td><span class="rk-pos rk-RB">RB36</span></td><td class="rk-team">LAR</td></tr>
+<tr data-pos="WR"><td class="rk-n">98</td><td class="rk-name">Antonio Williams</td><td><span class="rk-pos rk-WR">WR40</span></td><td class="rk-team">WAS</td></tr>
+<tr data-pos="RB"><td class="rk-n">99</td><td class="rk-name">Tony Pollard</td><td><span class="rk-pos rk-RB">RB37</span></td><td class="rk-team">TEN</td></tr>
+<tr data-pos="TE"><td class="rk-n">100</td><td class="rk-name">Harold Fannin Jr.</td><td><span class="rk-pos rk-TE">TE13</span></td><td class="rk-team">CLE</td></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 7: Deep-bench depth <span>(ranks 101-125)</span></th></tr>
+<tr data-pos="WR"><td class="rk-n">101</td><td class="rk-name">Keenan Allen</td><td><span class="rk-pos rk-WR">WR41</span></td><td class="rk-team">IND</td></tr>
+<tr data-pos="TE"><td class="rk-n">102</td><td class="rk-name">Terrance Ferguson</td><td><span class="rk-pos rk-TE">TE14</span></td><td class="rk-team">LAR</td></tr>
+<tr data-pos="RB"><td class="rk-n">103</td><td class="rk-name">Emanuel Wilson</td><td><span class="rk-pos rk-RB">RB38</span></td><td class="rk-team">SEA</td></tr>
+<tr data-pos="WR"><td class="rk-n">104</td><td class="rk-name">Omar Cooper Jr.</td><td><span class="rk-pos rk-WR">WR42</span></td><td class="rk-team">NYJ</td></tr>
+<tr data-pos="RB"><td class="rk-n">105</td><td class="rk-name">RJ Harvey</td><td><span class="rk-pos rk-RB">RB39</span></td><td class="rk-team">DEN</td></tr>
+<tr data-pos="WR"><td class="rk-n">106</td><td class="rk-name">Jakobi Meyers</td><td><span class="rk-pos rk-WR">WR43</span></td><td class="rk-team">JAX</td></tr>
+<tr data-pos="QB"><td class="rk-n">107</td><td class="rk-name">Matthew Stafford</td><td><span class="rk-pos rk-QB">QB11</span></td><td class="rk-team">LAR</td></tr>
+<tr data-pos="RB"><td class="rk-n">108</td><td class="rk-name">Brian Robinson Jr.</td><td><span class="rk-pos rk-RB">RB40</span></td><td class="rk-team">ATL</td></tr>
+<tr data-pos="TE"><td class="rk-n">109</td><td class="rk-name">Brenton Strange</td><td><span class="rk-pos rk-TE">TE15</span></td><td class="rk-team">JAX</td></tr>
+<tr data-pos="WR"><td class="rk-n">110</td><td class="rk-name">Jordyn Tyson</td><td><span class="rk-pos rk-WR">WR44</span></td><td class="rk-team">NO</td></tr>
+<tr data-pos="RB"><td class="rk-n">111</td><td class="rk-name">TreVeyon Henderson</td><td><span class="rk-pos rk-RB">RB41</span></td><td class="rk-team">NE</td></tr>
+<tr data-pos="QB"><td class="rk-n">112</td><td class="rk-name">Patrick Mahomes</td><td><span class="rk-pos rk-QB">QB12</span></td><td class="rk-team">KC</td></tr>
+<tr data-pos="RB"><td class="rk-n">113</td><td class="rk-name">Alvin Kamara</td><td><span class="rk-pos rk-RB">RB42</span></td><td class="rk-team">NO</td></tr>
+<tr data-pos="QB"><td class="rk-n">114</td><td class="rk-name">Jordan Love</td><td><span class="rk-pos rk-QB">QB13</span></td><td class="rk-team">GB</td></tr>
+<tr data-pos="QB"><td class="rk-n">115</td><td class="rk-name">Dak Prescott</td><td><span class="rk-pos rk-QB">QB14</span></td><td class="rk-team">DAL</td></tr>
+<tr data-pos="WR"><td class="rk-n">116</td><td class="rk-name">Josh Downs</td><td><span class="rk-pos rk-WR">WR45</span></td><td class="rk-team">IND</td></tr>
+<tr data-pos="WR"><td class="rk-n">117</td><td class="rk-name">Keon Coleman</td><td><span class="rk-pos rk-WR">WR46</span></td><td class="rk-team">BUF</td></tr>
+<tr data-pos="TE"><td class="rk-n">118</td><td class="rk-name">Juwan Johnson</td><td><span class="rk-pos rk-TE">TE16</span></td><td class="rk-team">NO</td></tr>
+<tr data-pos="TE"><td class="rk-n">119</td><td class="rk-name">Hunter Henry</td><td><span class="rk-pos rk-TE">TE17</span></td><td class="rk-team">NE</td></tr>
+<tr data-pos="RB"><td class="rk-n">120</td><td class="rk-name">Jonah Coleman</td><td><span class="rk-pos rk-RB">RB43</span></td><td class="rk-team">DEN</td></tr>
+<tr data-pos="TE"><td class="rk-n">121</td><td class="rk-name">Chig Okonkwo</td><td><span class="rk-pos rk-TE">TE18</span></td><td class="rk-team">WAS</td></tr>
+<tr data-pos="RB"><td class="rk-n">122</td><td class="rk-name">Kaelon Black</td><td><span class="rk-pos rk-RB">RB44</span></td><td class="rk-team">SF</td></tr>
+<tr data-pos="WR"><td class="rk-n">123</td><td class="rk-name">Treylon Burks</td><td><span class="rk-pos rk-WR">WR47</span></td><td class="rk-team">WAS</td></tr>
+<tr data-pos="WR"><td class="rk-n">124</td><td class="rk-name">Malik Washington</td><td><span class="rk-pos rk-WR">WR48</span></td><td class="rk-team">MIA</td></tr>
+<tr data-pos="RB"><td class="rk-n">125</td><td class="rk-name">Mike Washington Jr.</td><td><span class="rk-pos rk-RB">RB45</span></td><td class="rk-team">LV</td></tr>
+<tr class="rk-tier" data-tier="1"><th colspan="4" scope="colgroup">Tier 8: Roster-spot holds and handcuffs <span>(ranks 126-150)</span></th></tr>
+<tr data-pos="QB"><td class="rk-n">126</td><td class="rk-name">Tyler Shough</td><td><span class="rk-pos rk-QB">QB15</span></td><td class="rk-team">NO</td></tr>
+<tr data-pos="WR"><td class="rk-n">127</td><td class="rk-name">Jordan Addison</td><td><span class="rk-pos rk-WR">WR49</span></td><td class="rk-team">MIN</td></tr>
+<tr data-pos="WR"><td class="rk-n">128</td><td class="rk-name">Wan&#x27;Dale Robinson</td><td><span class="rk-pos rk-WR">WR50</span></td><td class="rk-team">TEN</td></tr>
+<tr data-pos="QB"><td class="rk-n">129</td><td class="rk-name">C.J. Stroud</td><td><span class="rk-pos rk-QB">QB16</span></td><td class="rk-team">HOU</td></tr>
+<tr data-pos="WR"><td class="rk-n">130</td><td class="rk-name">Demario Douglas</td><td><span class="rk-pos rk-WR">WR51</span></td><td class="rk-team">NE</td></tr>
+<tr data-pos="WR"><td class="rk-n">131</td><td class="rk-name">Xavier Worthy</td><td><span class="rk-pos rk-WR">WR52</span></td><td class="rk-team">KC</td></tr>
+<tr data-pos="WR"><td class="rk-n">132</td><td class="rk-name">KC Concepcion</td><td><span class="rk-pos rk-WR">WR53</span></td><td class="rk-team">CLE</td></tr>
+<tr data-pos="TE"><td class="rk-n">133</td><td class="rk-name">Pat Freiermuth</td><td><span class="rk-pos rk-TE">TE19</span></td><td class="rk-team">PIT</td></tr>
+<tr data-pos="TE"><td class="rk-n">134</td><td class="rk-name">Jake Ferguson</td><td><span class="rk-pos rk-TE">TE20</span></td><td class="rk-team">DAL</td></tr>
+<tr data-pos="WR"><td class="rk-n">135</td><td class="rk-name">Devaughn Vele</td><td><span class="rk-pos rk-WR">WR54</span></td><td class="rk-team">NO</td></tr>
+<tr data-pos="RB"><td class="rk-n">136</td><td class="rk-name">Keaton Mitchell</td><td><span class="rk-pos rk-RB">RB46</span></td><td class="rk-team">LAC</td></tr>
+<tr data-pos="WR"><td class="rk-n">137</td><td class="rk-name">Davante Adams</td><td><span class="rk-pos rk-WR">WR55</span></td><td class="rk-team">LAR</td></tr>
+<tr data-pos="RB"><td class="rk-n">138</td><td class="rk-name">MarShawn Lloyd</td><td><span class="rk-pos rk-RB">RB47</span></td><td class="rk-team">GB</td></tr>
+<tr data-pos="WR"><td class="rk-n">139</td><td class="rk-name">Jaylin Noel</td><td><span class="rk-pos rk-WR">WR56</span></td><td class="rk-team">HOU</td></tr>
+<tr data-pos="RB"><td class="rk-n">140</td><td class="rk-name">Tyler Allgeier</td><td><span class="rk-pos rk-RB">RB48</span></td><td class="rk-team">ARI</td></tr>
+<tr data-pos="RB"><td class="rk-n">141</td><td class="rk-name">Emmett Johnson</td><td><span class="rk-pos rk-RB">RB49</span></td><td class="rk-team">KC</td></tr>
+<tr data-pos="RB"><td class="rk-n">142</td><td class="rk-name">Tyrone Tracy Jr.</td><td><span class="rk-pos rk-RB">RB50</span></td><td class="rk-team">NYG</td></tr>
+<tr data-pos="WR"><td class="rk-n">143</td><td class="rk-name">Alec Pierce</td><td><span class="rk-pos rk-WR">WR57</span></td><td class="rk-team">IND</td></tr>
+<tr data-pos="WR"><td class="rk-n">144</td><td class="rk-name">Christian Kirk</td><td><span class="rk-pos rk-WR">WR58</span></td><td class="rk-team">SF</td></tr>
+<tr data-pos="TE"><td class="rk-n">145</td><td class="rk-name">Kenyon Sadiq</td><td><span class="rk-pos rk-TE">TE21</span></td><td class="rk-team">NYJ</td></tr>
+<tr data-pos="RB"><td class="rk-n">146</td><td class="rk-name">Jadarian Price</td><td><span class="rk-pos rk-RB">RB51</span></td><td class="rk-team">SEA</td></tr>
+<tr data-pos="TE"><td class="rk-n">147</td><td class="rk-name">Dalton Schultz</td><td><span class="rk-pos rk-TE">TE22</span></td><td class="rk-team">HOU</td></tr>
+<tr data-pos="WR"><td class="rk-n">148</td><td class="rk-name">Brian Thomas Jr.</td><td><span class="rk-pos rk-WR">WR59</span></td><td class="rk-team">JAX</td></tr>
+<tr data-pos="RB"><td class="rk-n">149</td><td class="rk-name">Kendre Miller</td><td><span class="rk-pos rk-RB">RB52</span></td><td class="rk-team">NO</td></tr>
+<tr data-pos="TE"><td class="rk-n">150</td><td class="rk-name">Colby Parkinson</td><td><span class="rk-pos rk-TE">TE23</span></td><td class="rk-team">LAR</td></tr>
+  </tbody>
+</table>
+
+<section class="rk-method">
+  <h2>How this list was built</h2>
+  <p>Every rank on this page was produced by an AI model for a class project, and it is an opinion, not a projection. It starts from two public sources, both published on October 20, 2026:</p>
+  <ul>
+    <li>The Week 7 trade-value chart and rest-of-season rankings from CBS Sports (Dave Richard), which publishes separate values for full-PPR leagues.</li>
+    <li>The Week 7 rest-of-season consensus rankings from USA Today's fantasy staff, as carried on Yahoo Sports. These are built for half-PPR leagues, so they are adjusted below.</li>
+  </ul>
+  <p>Positions and rest-of-season position lists were cross-checked against a third public set of rankings (Wolf Sports). Where a player appears in only one source, that source sets his place.</p>
+  <h2>Adjustments for PPR and deep leagues</h2>
+  <ul>
+    <li><strong>Blend.</strong> A player's two ranks are combined, with the 12-team consensus counting for 60 percent and the PPR trade values for 40 percent.</li>
+    <li><strong>PPR bump.</strong> Running backs move up about 3 percent and wide receivers and tight ends about 2 percent, because a catch is worth a full point and the half-PPR source undercounts them.</li>
+    <li><strong>Deep-league quarterback discount.</strong> Quarterbacks move down about 12 percent. In a 14- or 16-team league with one starting quarterback, a replacement is close to free relative to the points he scores, while a replacement running back or receiver is not.</li>
+  </ul>
+  <p>Tiers are fixed rank bands (the first six players, then the next nine, and so on), not statistical clusters. They are there to help you see where depth thins out, not to claim precision.</p>
+  <h2>Read this before you trade</h2>
+  <p>Rosters, roles, and injuries change daily. Check each player's status before you act, and treat anyone listed as questionable or out as a different player until he is back. Rookies and players with new teams carry the widest range of outcomes. The list is refreshed each week during the season.</p>
+</section>
+
+<script>
+(function () {
+  var box = document.getElementById('rk-filter');
+  var table = document.getElementById('rk-table');
+  var status = document.getElementById('rk-status');
+  if (!box || !table) { return; }
+  var rows = Array.prototype.slice.call(table.tBodies[0].rows);
+  var total = rows.filter(function (r) { return r.hasAttribute('data-pos'); }).length;
+  var names = { ALL: 'all players', QB: 'quarterbacks', RB: 'running backs', WR: 'wide receivers', TE: 'tight ends' };
+  box.hidden = false;
+  function apply(pos) {
+    var shown = 0, pendingTier = null, tierHasRow = false;
+    rows.forEach(function (r) {
+      if (r.classList.contains('rk-tier')) {
+        if (pendingTier) { pendingTier.hidden = !tierHasRow; }
+        pendingTier = r; tierHasRow = false; return;
+      }
+      var show = (pos === 'ALL' || r.getAttribute('data-pos') === pos);
+      r.hidden = !show;
+      if (show) { shown++; tierHasRow = true; }
+    });
+    if (pendingTier) { pendingTier.hidden = !tierHasRow; }
+    status.textContent = 'Showing ' + shown + ' of ' + total + ' (' + names[pos] + ').';
+  }
+  box.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) { return; }
+    Array.prototype.forEach.call(box.querySelectorAll('button'), function (x) {
+      x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+    });
+    apply(b.getAttribute('data-pos'));
+  });
+})();
+</script>
