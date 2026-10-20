@@ -825,7 +825,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
   </div>
 
   <main id="main" class="wrap">
-    {% if page.date and page.layout != 'post' %}
+    {% if page.date %}
     <article class="post measure">
       <header class="post-header">
         <p class="post-tags">{% for cat in page.categories %}<a class="tag tag-{{ cat }}" href="{{ '/' | append: cat | append: '/' | relative_url }}">{{ cat | capitalize }}</a>{% endfor %}</p>
