@@ -1,9 +1,11 @@
 ---
 title: "Deep-League PPR Flex Rankings for Week 6, Ranked by How Sure You Can Be"
+seo_title: "PPR Flex Rankings for Deep Leagues, Week 6 | The Weekly Snap"
+description: "PPR flex rankings for Week 6 in 14- and 16-team leagues, ordered by how sure you can be of each player's role. Current through October 14."
 categories: [rankings]
 ---
 
-In a deep league the flex spot is really an availability contest. Everyone has the same four or five names to choose from, so the question is not who has the highest ceiling but whose role you can trust. These Week 6 flex rankings are for PPR leagues with 14 or more teams, and they are ordered by confidence first and upside second. Information is current through Wednesday, October 14.
+In a deep league the flex spot is really an availability contest. Everyone has the same four or five names to choose from, so the question is not who has the highest ceiling but whose role you can trust. These PPR flex rankings for Week 6 are for leagues with 14 or more teams, and they are ordered by confidence first and upside second. Information is current through Wednesday, October 14.
 
 ## The rankings
 
@@ -27,4 +29,4 @@ In a deep league the flex spot is really an availability contest. Everyone has t
 
 Check inactives about ninety minutes before kickoff, because three of these calls depend on a teammate's status. If Montgomery plays, move Marks down a spot. If Wilson plays, move Bernard down. Flex decisions in a 16-team league are best made by asking which player you would regret not starting, and the answer is usually the one with the clearest role.
 
-For how to add these players and what to bid, see [the Week 6 waiver wire]({{ '/rankings/week-6-deep-league-waiver-wire-adds/' | relative_url }}).
+For how to add these players and what to bid, see [Week 6 deep league waiver wire pickups]({{ '/rankings/week-6-deep-league-waiver-wire-adds/' | relative_url }}).

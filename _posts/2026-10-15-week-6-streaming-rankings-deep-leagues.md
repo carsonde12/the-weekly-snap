@@ -1,9 +1,11 @@
 ---
 title: "Week 6 Streaming Rankings for Deep Leagues: Tight Ends and Defenses"
+seo_title: "Fantasy Football Streaming Rankings: TE and Defense"
+description: "Fantasy football streaming rankings for Week 6 in deep leagues: the best tight end and defense streamers, and how to stream when the wire is thin."
 categories: [rankings]
 ---
 
-Streaming in a 16-team league means picking from whoever is left, and with four teams on bye this week there is less left than usual. These rankings cover tight ends and defenses, the two positions where deep-league managers most often end up with an empty slot. Information is current through Wednesday, October 14.
+Streaming in a 16-team league means picking from whoever is left, and with four teams on bye this week there is less left than usual. These fantasy football streaming rankings cover tight ends and defenses, the two positions where deep-league managers most often end up with an empty slot. Information is current through Wednesday, October 14.
 
 ## Tight ends
 
@@ -27,4 +29,4 @@ Defense is the hardest position to stream in a deep league because the best unit
 - **Prefer turnovers and sacks to yards allowed.** Fantasy defenses score on takeaways, not on stopping drives.
 - **Do not chase last week's points.** A defense that scored 20 points last week often did it against a bad offense, and this week's opponent is what you are buying.
 
-For a plan to cover your bye-week holes at every position, see [our replacement rankings]({{ '/analysis/bye-week-replacement-rankings-deep-leagues/' | relative_url }}).
+For a plan to cover your bye-week holes at every position, see [fantasy football bye week replacements]({{ '/analysis/bye-week-replacement-rankings-deep-leagues/' | relative_url }}).

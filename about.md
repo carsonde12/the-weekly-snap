@@ -1,6 +1,8 @@
 ---
 layout: default
 title: About
+seo_title: "The Weekly Snap Fantasy Football: About the Site"
+description: "About The Weekly Snap, a fictional deep league fantasy football site made with AI for a class: who writes it and how the rankings work."
 permalink: /about/
 prose: true
 ---

@@ -1,9 +1,11 @@
 ---
 title: "Week 6 Deep-League Waiver Wire: Six Adds for 14- and 16-Team Leagues"
+seo_title: "Deep League Waiver Wire Pickups: Week 6 Adds"
+description: "Six deep league waiver wire pickups for Week 6 in 14- and 16-team leagues, ranked by how much to bid, plus the players not worth chasing."
 categories: [rankings]
 ---
 
-Four teams are on bye this week, the Bengals, Lions, Dolphins, and Vikings, which makes a deep-league waiver wire thinner than usual. The six players below are ranked by how much I would pay for them in a 14- or 16-team league. Roles and injury statuses are current through Wednesday, October 14, and they can change before kickoff.
+Four teams are on bye this week, the Bengals, Lions, Dolphins, and Vikings, which makes a deep-league waiver wire thinner than usual. The six players below are the deep league waiver wire pickups I would pay for in a 14- or 16-team league, ranked by how much I would bid. Roles and injury statuses are current through Wednesday, October 14, and they can change before kickoff.
 
 ## The six adds, in order
 
@@ -16,7 +18,7 @@ Four teams are on bye this week, the Bengals, Lions, Dolphins, and Vikings, whic
 
 ## How much to bid
 
-The percentages use the ladder from [our waiver strategy post]({{ '/analysis/16-team-waiver-wire-strategy/' | relative_url }}).
+The percentages use the ladder from [16-team fantasy football waiver wire strategy]({{ '/analysis/16-team-waiver-wire-strategy/' | relative_url }}).
 
 | Player | Position | Bid |
 |---|---|---|
@@ -33,4 +35,4 @@ Do not bid on a player because he scored twice last week on four touches. In a d
 
 ## Putting it together
 
-If you lost a starter to a bye, the receivers on this list and Winston are the quickest fixes, and the bye-week plan in [our replacement rankings]({{ '/analysis/bye-week-replacement-rankings-deep-leagues/' | relative_url }}) shows how to order the options. For tight ends and defenses, see [this week's streaming rankings]({{ '/rankings/week-6-streaming-rankings-deep-leagues/' | relative_url }}).
+If you lost a starter to a bye, the receivers on this list and Winston are the quickest fixes, and the bye-week plan in [fantasy football bye week replacements]({{ '/analysis/bye-week-replacement-rankings-deep-leagues/' | relative_url }}) shows how to order the options. For tight ends and defenses, see [fantasy football streaming rankings]({{ '/rankings/week-6-streaming-rankings-deep-leagues/' | relative_url }}).

@@ -793,7 +793,8 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
   * { transition: none !important; }
 }
   </style>
-  {% seo %}
+  <title>{% if page.seo_title %}{{ page.seo_title }}{% elsif page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  {% seo title=false %}
   {% feed_meta %}
 </head>
 <body>
@@ -838,7 +839,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
       <aside class="post-cta">
         <p class="post-cta-title">Building a roster or weighing a trade?</p>
         <p>See all 150 players ranked for PPR value, in tiers, for 14- and 16-team leagues.</p>
-        <a class="btn btn-primary" href="{{ '/top-150-ppr-rankings/' | relative_url }}">Open the top 150 rankings</a>
+        <a class="btn btn-primary" href="{{ '/top-150-ppr-rankings/' | relative_url }}">See the top 150 fantasy football rankings (PPR)</a>
       </aside>
     </article>
     {% elsif page.prose %}
@@ -859,9 +860,9 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
         </div>
         <ul class="footer-nav">
           <li><a href="{{ '/' | relative_url }}">All posts</a></li>
-          <li><a href="{{ '/rankings/' | relative_url }}">Rankings and start-sit</a></li>
-          <li><a href="{{ '/analysis/' | relative_url }}">Analysis and takes</a></li>
-          <li><a href="{{ '/top-150-ppr-rankings/' | relative_url }}">Top 150 PPR rankings</a></li>
+          <li><a href="{{ '/rankings/' | relative_url }}">Deep league fantasy football rankings</a></li>
+          <li><a href="{{ '/analysis/' | relative_url }}">Deep league fantasy football strategy</a></li>
+          <li><a href="{{ '/top-150-ppr-rankings/' | relative_url }}">Top 150 fantasy football rankings (PPR)</a></li>
           <li><a href="{{ '/about/' | relative_url }}">About</a></li>
           <li><a href="{{ '/feed.xml' | relative_url }}">RSS feed</a></li>
         </ul>

@@ -1,9 +1,11 @@
 ---
 title: "Why 12-Team Rankings Fail in 14- and 16-Team Leagues"
+seo_title: "16 Team Fantasy Football Rankings: Why 12-Team Lists Fail"
+description: "Why 12-team rankings fail in 14- and 16-team leagues, and the three adjustments that turn a generic list into rankings you can use."
 categories: [analysis]
 ---
 
-A ranking built for a 12-team league answers one question: who are the best players? A deep-league manager has to answer a harder one: who is the best player I can actually get? The two lists look alike at the top and drift apart quickly after that, and the gap between them is where deep-league championships are won.
+A ranking built for a 12-team league answers one question: who are the best players? A deep-league manager has to answer a harder one: who is the best player I can actually get? The two lists look alike at the top and drift apart quickly after that, and the gap between them is where deep-league championships are won. It is also why 16 team fantasy football rankings have to be built differently from the lists most sites publish.
 
 ## The league math
 
@@ -35,4 +37,4 @@ Going from 12 teams to 16 adds 28 starting spots and takes 60 more players off t
 
 These numbers are illustrative, not measured. Say a receiver averages ten PPR points a week. In a 12-team league the best free-agent receiver might average eight, so the player is worth two points over replacement. In a 16-team league the best free agent might average five, so the same receiver is worth five points over replacement, two and a half times as much. The player did not change. The league did.
 
-Next, see how this plays out on the waiver wire in [our 16-team waiver strategy post]({{ '/analysis/16-team-waiver-wire-strategy/' | relative_url }}), or put it to work with [this week's waiver adds]({{ '/rankings/week-6-deep-league-waiver-wire-adds/' | relative_url }}).
+Next, see how this plays out on the waiver wire in [16-team fantasy football waiver wire strategy]({{ '/analysis/16-team-waiver-wire-strategy/' | relative_url }}), or put it to work with [Week 6 waiver wire adds for deep leagues]({{ '/rankings/week-6-deep-league-waiver-wire-adds/' | relative_url }}).

@@ -1,9 +1,11 @@
 ---
 title: "16-Team Waiver Wire Strategy: How to Spend Your Budget When Everyone Is Hungry"
+seo_title: "16-Team Fantasy Football Waiver Wire Strategy"
+description: "A 16-team fantasy football waiver wire strategy: what the wire really holds, a bid ladder, four rules, and how to spend your budget."
 categories: [analysis]
 ---
 
-In a 16-team league the waiver wire is not a place to find bargains. It is an auction where every manager is bidding on the same four or five players, and the winner is usually the manager who decided what each player was worth before the bidding opened. This post is a plan for making that decision in advance.
+In a 16-team fantasy football league the waiver wire is not a place to find bargains. It is an auction where every manager is bidding on the same four or five players, and the winner is usually the manager who decided what each player was worth before the bidding opened. This post is a plan for making that decision in advance.
 
 ## Know what the wire actually holds
 
@@ -29,7 +31,7 @@ Assume a $100 budget and scale the percentages to your league's. These ranges ar
 
 ## A recent example
 
-The Week 6 wire offered a textbook handcuff case: the Chiefs' backup Emmett Johnson sits behind Kenneth Walker III, a lead back who has carried a heavy workload and has a history of injuries. A small bid on a handcuff like that is cheap insurance for a manager who owns Walker, and a smart blocking move for a manager who does not. The full list of adds is in [our Week 6 waiver post]({{ '/rankings/week-6-deep-league-waiver-wire-adds/' | relative_url }}).
+The Week 6 wire offered a textbook handcuff case: the Chiefs' backup Emmett Johnson sits behind Kenneth Walker III, a lead back who has carried a heavy workload and has a history of injuries. A small bid on a handcuff like that is cheap insurance for a manager who owns Walker, and a smart blocking move for a manager who does not. The full list of adds is in [Week 6 deep league waiver wire pickups]({{ '/rankings/week-6-deep-league-waiver-wire-adds/' | relative_url }}).
 
 ## If your league uses waiver priority instead
 
