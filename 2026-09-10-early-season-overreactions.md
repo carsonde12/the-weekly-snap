@@ -3,7 +3,6 @@ title: "Early-Season Overreactions Worth Having (and Ones to Ignore)"
 categories: [analysis]
 ---
 
-*(Placeholder post — swap in your real take. This shows the longer-form article format.)*
 
 One week of data is almost nothing, and yet it's exactly when fantasy managers make their most dramatic roster moves. Some of that instinct is right. Most of it isn't.
 
