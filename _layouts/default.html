@@ -3,6 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    /* Apply the saved light/dark choice before the page paints, so there is no flash. */
+    (function () {
+      try {
+        var t = localStorage.getItem("weekly-snap-theme");
+        if (t === "dark" || t === "light") { document.documentElement.setAttribute("data-theme", t); }
+      } catch (e) { /* storage blocked: fall back to the device setting */ }
+    })();
+  </script>
   <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +42,21 @@
   --rule: #c9d1c3;
   --red: #b3342b;
 
+  /* theme tokens: these are the ones that change in dark mode.
+     --ink stays a constant dark colour (text on yellow, dark fills). */
+  --text: #121b24;          /* body text on the page */
+  --line: #121b24;          /* heavy borders */
+  --fill: #121b24;          /* dark blocks that hold light text */
+  --on-fill: #f4f7f0;       /* text on those blocks (never changes) */
+  --surface: #fff;          /* inputs, cards, hover panels */
+  --link: #1f54e0;
+  --focus: #1f54e0;
+  --hl: #fff7c7;            /* blockquote highlight */
+  --nav-hover: rgba(31, 84, 224, 0.1);
+  --turf-t: #13703b;        /* turf green used as text / thin bars */
+  --red-t: #b3342b;         /* red used as text / thin bars */
+  color-scheme: light;
+
   --chalk: var(--paper);
   --gold: var(--flag);
   --brick: var(--red);
@@ -46,6 +70,55 @@
   --measure: 680px;
 }
 
+/* ---- Dark theme --------------------------------------------------------
+   Applied when the visitor flips the switch (data-theme="dark") or, if they
+   never chose, when their device is set to dark. The two blocks below must
+   stay identical. -------------------------------------------------------- */
+:root[data-theme="dark"] {
+  --paper: #0f1713;
+  --paint: #17221c;
+  --turf: #12683a;
+  --turf-light: #187a45;
+  --turf-deep: #072316;
+  --scrim: #3d6cf0;
+  --slate: #a9b8ae;
+  --rule: #2f3f35;
+  --text: #e8efe6;
+  --line: #7f9488;
+  --fill: #22312a;
+  --surface: #1f2c25;
+  --link: #8fb1ff;
+  --focus: #8fb1ff;
+  --hl: #2d2c14;
+  --nav-hover: rgba(143, 177, 255, 0.16);
+  --turf-t: #55cc84;
+  --red-t: #ff8f86;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1713;
+    --paint: #17221c;
+    --turf: #12683a;
+    --turf-light: #187a45;
+    --turf-deep: #072316;
+    --scrim: #3d6cf0;
+    --slate: #a9b8ae;
+    --rule: #2f3f35;
+    --text: #e8efe6;
+    --line: #7f9488;
+    --fill: #22312a;
+    --surface: #1f2c25;
+    --link: #8fb1ff;
+    --focus: #8fb1ff;
+    --hl: #2d2c14;
+    --nav-hover: rgba(143, 177, 255, 0.16);
+    --turf-t: #55cc84;
+    --red-t: #ff8f86;
+    color-scheme: dark;
+  }
+}
+
 * { box-sizing: border-box; }
 
 html { -webkit-text-size-adjust: 100%; }
@@ -53,7 +126,7 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   background: var(--paper);
-  color: var(--ink);
+  color: var(--text);
   font-family: var(--font-body);
   font-optical-sizing: auto;
   font-size: 1.0625rem;
@@ -66,7 +139,7 @@ a { color: inherit; }
 img, svg { max-width: 100%; }
 
 :focus-visible {
-  outline: 3px solid var(--scrim);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
@@ -94,8 +167,8 @@ img, svg { max-width: 100%; }
 /* ---- Fictional-site notice (top of every page) ------------------------ */
 
 .site-notice {
-  background: var(--ink);
-  color: var(--paint);
+  background: var(--fill);
+  color: var(--on-fill);
   padding: 9px 0;
   font-size: 0.84rem;
   line-height: 1.4;
@@ -181,13 +254,65 @@ img, svg { max-width: 100%; }
   font-weight: 700;
   font-size: 0.97rem;
   text-decoration: none;
-  color: var(--ink);
+  color: var(--text);
 }
 
-.site-nav a:hover { background: rgba(31, 84, 224, 0.1); }
+.site-nav a:hover { background: var(--nav-hover); }
 
 /* the page you are on gets the yellow first-down fill */
-.site-nav a[aria-current] { background: var(--flag); }
+.site-nav a[aria-current] { background: var(--flag); color: var(--ink); }
+
+/* ---- Dark mode switch ------------------------------------------------- */
+
+.navbar .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 16px;
+}
+.navbar .site-nav { flex: 1 1 auto; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin: 2px 0;
+  padding: 0 4px 0 8px;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.theme-toggle[hidden] { display: none; }
+
+.theme-toggle-track {
+  position: relative;
+  flex: none;
+  width: 52px;
+  height: 28px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  transition: background-color 0.18s;
+}
+.theme-toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: var(--text);
+  border-radius: 50%;
+  transition: transform 0.18s;
+}
+.theme-toggle[aria-checked="true"] .theme-toggle-track { background: var(--flag); border-color: var(--flag); }
+.theme-toggle[aria-checked="true"] .theme-toggle-knob { transform: translateX(24px); background: var(--ink); }
+.theme-toggle:hover .theme-toggle-track { border-color: var(--scrim); }
 
 /* ---- Main -------------------------------------------------------------- */
 
@@ -200,7 +325,7 @@ main.wrap { padding-top: 36px; padding-bottom: 72px; }
 .btn {
   display: inline-block;
   padding: 12px 22px;
-  border: 2px solid var(--ink);
+  border: 2px solid var(--line);
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.2;
@@ -333,21 +458,21 @@ main.wrap { padding-top: 36px; padding-bottom: 72px; }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 36px;
-  border: 3px solid var(--ink);
+  border: 3px solid var(--line);
   background: var(--paint);
 }
 
 .start {
   display: block;
   padding: 22px 24px 26px;
-  border-right: 3px solid var(--ink);
+  border-right: 3px solid var(--line);
   border-top: 12px solid var(--flag);
   text-decoration: none;
 }
 .start:last-child { border-right: 0; }
 .start-b { border-top-color: var(--turf); }
 .start-c { border-top-color: var(--scrim); }
-.start:hover { background: #fff; }
+.start:hover { background: var(--surface); }
 .start:hover .start-title { text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: 4px; }
 
 .start-title {
@@ -373,8 +498,8 @@ main.wrap { padding-top: 36px; padding-bottom: 72px; }
 
 .feature {
   padding: 30px 32px 34px;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--fill);
+  color: var(--on-fill);
   border-left: 10px solid var(--flag);
 }
 
@@ -437,12 +562,12 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
   font-weight: 800;
   line-height: 1;
   background: var(--paint);
-  border: 2px solid var(--ink);
+  border: 2px solid var(--line);
 }
 .post-date .m {
   display: block;
   padding: 3px 0 2px;
-  background: var(--ink);
+  background: var(--fill);
   color: #fff;
   font-size: 0.95rem;
   letter-spacing: 0.08em;
@@ -459,7 +584,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
   line-height: 1.28;
   text-decoration: none;
 }
-.post-row-title:hover { color: var(--scrim); text-decoration: underline; text-underline-offset: 3px; }
+.post-row-title:hover { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
 
 .post-row-meta { margin: 6px 0 0; }
 
@@ -569,7 +694,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
 .prose p { margin: 1.05em 0; }
 
 .prose a {
-  color: var(--scrim);
+  color: var(--link);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
@@ -619,7 +744,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
 .prose blockquote {
   margin: 1.6em 0;
   padding: 14px 20px;
-  background: #fff7c7;
+  background: var(--hl);
   border-left: 6px solid var(--flag);
 }
 .prose blockquote p { margin: 0.4em 0; }
@@ -632,7 +757,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
   border-collapse: collapse;
   margin: 1.7em 0;
   font-size: 0.95rem;
-  border: 3px solid var(--ink);
+  border: 3px solid var(--line);
   background: var(--paint);
 }
 
@@ -644,7 +769,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
   overflow-wrap: anywhere;
 }
 
-.prose th { background: var(--ink); color: #fff; font-weight: 700; }
+.prose th { background: var(--fill); color: #fff; font-weight: 700; }
 .prose td { border-top: 1px solid var(--rule); }
 .prose td:first-child,
 .prose th:first-child { width: 30%; font-weight: 800; }
@@ -755,7 +880,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
 
 @media (max-width: 720px) {
   .starts { grid-template-columns: minmax(0, 1fr); }
-  .start { border-right: 0; border-bottom: 3px solid var(--ink); }
+  .start { border-right: 0; border-bottom: 3px solid var(--line); }
   .start:last-child { border-bottom: 0; }
   .footer-grid { grid-template-columns: minmax(0, 1fr); gap: 26px; }
   .field-yards { font-size: 2.6rem; }
@@ -770,6 +895,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
   .masthead { padding: 20px 0 18px; }
   .site-nav { margin-left: -12px; }
   .site-nav a { padding: 11px 12px 10px; font-size: 0.92rem; }
+  .navbar .wrap { padding-bottom: 4px; }
   .field-inner { padding: 34px 20px 28px; }
   .field-lede { font-size: 1.05rem; }
   .field-actions .btn { flex: 1 1 100%; text-align: center; }
@@ -823,6 +949,10 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
         <a href="{{ '/trade-calculator/' | relative_url }}"{% if page.url == '/trade-calculator/' %} aria-current="page"{% endif %}>Trade Calculator</a>
         <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
       </nav>
+      <button type="button" class="theme-toggle" id="theme-toggle" role="switch" aria-checked="false" hidden>
+        <span class="theme-toggle-label">Dark mode</span>
+        <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-knob"></span></span>
+      </button>
     </div>
   </div>
 
@@ -872,5 +1002,39 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
       <p class="footer-small">Built with Jekyll. Hosted on GitHub Pages.</p>
     </div>
   </footer>
+  <script>
+    (function () {
+      var KEY = "weekly-snap-theme";
+      var root = document.documentElement;
+      var btn = document.getElementById("theme-toggle");
+      if (!btn) { return; }
+      var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+      function isDark() {
+        var a = root.getAttribute("data-theme");
+        if (a === "dark") { return true; }
+        if (a === "light") { return false; }
+        return !!(mq && mq.matches);
+      }
+      function sync() { btn.setAttribute("aria-checked", isDark() ? "true" : "false"); }
+      btn.hidden = false;
+      sync();
+      btn.addEventListener("click", function () {
+        var next = isDark() ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem(KEY, next); } catch (e) { /* choice just lasts for this page view */ }
+        sync();
+      });
+      if (mq) {
+        if (mq.addEventListener) { mq.addEventListener("change", sync); }
+        else if (mq.addListener) { mq.addListener(sync); }
+      }
+      window.addEventListener("storage", function (ev) {
+        if (ev.key === KEY && (ev.newValue === "dark" || ev.newValue === "light")) {
+          root.setAttribute("data-theme", ev.newValue);
+          sync();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
