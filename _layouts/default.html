@@ -820,6 +820,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
         <a href="{{ '/rankings/' | relative_url }}"{% if page.url == '/rankings/' %} aria-current="page"{% elsif page.categories contains 'rankings' %} aria-current="true"{% endif %}>Rankings &amp; Start-Sit</a>
         <a href="{{ '/analysis/' | relative_url }}"{% if page.url == '/analysis/' %} aria-current="page"{% elsif page.categories contains 'analysis' %} aria-current="true"{% endif %}>Analysis &amp; Takes</a>
         <a href="{{ '/top-150-ppr-rankings/' | relative_url }}"{% if page.url == '/top-150-ppr-rankings/' %} aria-current="page"{% endif %}>Top 150 PPR</a>
+        <a href="{{ '/trade-calculator/' | relative_url }}"{% if page.url == '/trade-calculator/' %} aria-current="page"{% endif %}>Trade Calculator</a>
         <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
       </nav>
     </div>
@@ -863,6 +864,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
           <li><a href="{{ '/rankings/' | relative_url }}">Deep league fantasy football rankings</a></li>
           <li><a href="{{ '/analysis/' | relative_url }}">Deep league fantasy football strategy</a></li>
           <li><a href="{{ '/top-150-ppr-rankings/' | relative_url }}">Top 150 fantasy football rankings (PPR)</a></li>
+          <li><a href="{{ '/trade-calculator/' | relative_url }}">Deep league trade calculator</a></li>
           <li><a href="{{ '/about/' | relative_url }}">About</a></li>
           <li><a href="{{ '/feed.xml' | relative_url }}">RSS feed</a></li>
         </ul>
