@@ -921,6 +921,7 @@ a.tag:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
   </style>
   <title>{% if page.seo_title %}{{ page.seo_title }}{% elsif page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   {% seo title=false %}
+  {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
   {% feed_meta %}
 </head>
 <body>
